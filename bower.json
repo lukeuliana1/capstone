@@ -1,0 +1,29 @@
+{
+  "name": "capstone",
+  "description": "Capstone tracker project",
+  "main": "gulpfile.js",
+  "authors": [
+    "PSU Students"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "capstone",
+    "tracker",
+    "project",
+    "psu"
+  ],
+  "homepage": "https://github.com/alibekU/hackpsu",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.6",
+    "font-awesome": "~4.5.0",
+    "Buttons": "~2.0.0"
+  }
+}

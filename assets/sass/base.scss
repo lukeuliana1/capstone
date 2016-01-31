@@ -1,0 +1,22 @@
+$font-family-base: 'Raleway', sans-serif;
+@import "bootstrap";
+@import "font-awesome";
+@import "buttons";
+
+html, body {
+  height: 100%;
+}
+
+.input-group {
+	.fa {
+		display: table-cell;
+	}
+	.fa-envelope {
+		font-size: 10px;
+	}
+}
+
+.hidden {
+	display: none;
+}
+

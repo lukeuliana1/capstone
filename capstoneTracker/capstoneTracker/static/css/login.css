@@ -1,0 +1,3 @@
+body{background-color:#003A6F}.row,.authContainer{height:100%}.authContainer{display:flex;flex-direction:column;justify-content:center;align-items:center;align-self:center}.authBlock{display:flex;flex-direction:column;justify-content:center;align-items:center;align-self:center}.authBlock .logo{margin-bottom:15px}.authBlock .loading{display:none;height:40px;width:50px}.authBlock .response{text-align:center}.auth{display:flex;flex-direction:column;align-items:center}.auth .input-group{width:50%;margin-top:5px}.auth .input-group .fa-envelope{padding:2px 12px}.auth .submit{margin-top:10px}.auth .bottomText{margin-top:10px;color:white}.auth .bottomText a{color:#2980CC}.auth .bottomText a:hover{color:#337ab7;text-decoration:none}
+
+/*# sourceMappingURL=login.css.map */
