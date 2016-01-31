@@ -9,4 +9,5 @@ capstoneTracker/capstoneTracker/templates/
 experience/.DS_Store
 assets/.DS_Store
 *.pyc
+*.xml
 .DS_Store
