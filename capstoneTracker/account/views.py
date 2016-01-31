@@ -29,7 +29,7 @@ def login(request):
 
 def register(request):
     if request.user.is_authenticated():
-        redirect(profile)
+        return redirect(profile)
     args = {}
     args.update(csrf(request))
     args['form'] = UserCreationForm()

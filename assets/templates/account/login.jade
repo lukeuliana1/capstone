@@ -12,7 +12,7 @@ html(lang="en")
 				.authBlock
 					img.logo(src="{% static 'images/capitalone-logo-white.png' %}")
 					img.loading(src="{% static 'images/elements/loading.svg' %}")
-					.response
+					.response#response
 					form.auth {% csrf_token %}
 						.input-group.email-group
 							span.input-group-addon.fa.fa-envelope
