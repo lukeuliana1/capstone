@@ -16,20 +16,19 @@
 
 ## Localhost Setup
 1. Clone the repository:
-   <p>`$ git clone https://github.com/MetaCapstoneTeam/capstoneTracker.git capstone`
+   <p>`$ git clone https://github.com/yeralin/capstone.git capstone`
 
 2. Navigate into capstone repo:
    <p>`$ cd capstone`
 
 3. Create Virtual Environment Wrapper using Python 3.4:
-   <p>`$ mkvirtualenv -p python3.4 capstone-project`
+   <p>`$ mkvirtualenv -p python3.4 capstoneTracker`
 
 4. Go into you're local environment if not already there:
-  	<p>`$ workon capstone-project`
+  	<p>`$ workon capstoneTracker`
     <p>(capstone-project) should appear at the start of your command prompt
 
 5. Install all the requirements:
-	<p>`$ cd c1_capstonetracker`
 	<p>`$ pip3 install -r requirements.txt`
 
 6. Create local database
@@ -38,8 +37,7 @@
     <p>`$ quit`
 
 7. Set up the database: (for windows do not include ./)
-    <p>`$ ./manage.py syncdb`
-	  <p>`$ ./manage.py shell < projectTracker/create_groups.py`
+    <p>`$ ./manage.py migrate`
 	  <p>`$ ./manage.py makemigrations`
 	  <p>`$ ./manage.py migrate`
 
