@@ -1,0 +1,12 @@
+#Ignore following directories and files
+
+node_modules/
+bower_components/
+capstoneTracker/.idea/
+capstoneTracker/capstoneTracker/static/
+capstoneTracker/static/
+capstoneTracker/capstoneTracker/templates/
+experience/.DS_Store
+assets/.DS_Store
+*.pyc
+.DS_Store
