@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-lg-4 col-lg-offset-4 authContainer">
         <div class="authBlock"><img src="{% static 'images/capitalone-logo-white.png' %}" class="logo"><img src="{% static 'images/elements/loading.svg' %}" class="loading">
-          <div class="response"></div>
+          <div id="response" class="response"></div>
           <form class="auth">{% csrf_token %}
             <div class="input-group email-group"><span class="input-group-addon fa fa-envelope"></span>
               <input type="email" name="email" value="Email address" onblur="if(this.value == '') this.value = 'Email address'" onfocus="if(this.value == 'Email address') this.value = ''" required="" class="form-control">
@@ -24,6 +24,11 @@
             <div style="display:none" class="input-group last-name-group"><span class="input-group-addon fa fa-user"></span>
               <input type="text" name="last_name" value="Last name" onblur="if(this.value == '') this.value = 'Last name'" onfocus="if(this.value == 'Last name') this.value = ''" required="" class="form-control">
             </div>
+            <input type="text" name="user_type" class="user-type">
+            <select class="user-type-group selectpicker">
+              <option value="student">Student</option>
+              <option value="employee">Employee</option>
+            </select>
             <input type="submit" class="button button-glow button-rounded button-small submit">
             <p class="bottomText Up">Not a member? <a href="#" class="signup">Sign up now</a></p>
             <p style="display:none" class="bottomText In">Already a member? <a href="#" class="signin">Sign in now</a></p>

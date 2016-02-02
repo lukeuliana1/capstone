@@ -25,14 +25,13 @@ var config = {
 }
 
 gulp.task('jade', function() {
-    return gulp.src([config.assets + 'templates/**/*.jade', '!' + config.assets + 'templates/template/**/_*.jade'])
+    return gulp.src(['./assets/templates/**/*.jade', '!' + config.assets + 'templates/template/**/_*.jade'])
         .pipe(jade({
             pretty: true
         }))
-        .on('Warning', function(){})
         .on('error', console.log)
         .pipe(gulp.dest(config.templates))
-        .pipe(livereload());;
+        .pipe(livereload());
 });
 
 gulp.task('sass', function() {
@@ -44,6 +43,7 @@ gulp.task('sass', function() {
         includePaths: [
             './resources/sass',
             config.bowerDir + '/bootstrap-sass/assets/stylesheets',
+            config.bowerDir + '/bootstrap-select/sass',
             config.bowerDir + '/font-awesome/scss',
             config.bowerDir + '/Buttons/scss']
         }))
@@ -101,7 +101,7 @@ gulp.task('bower', function() { 
 
 gulp.task('collectstatic', function() {
     var isWin = /^win/.test(process.platform);
-    var cmd =  "bash -l -c 'workon capstone-project && PYTHONUNBUFFERED=1 python ./capstoneTracker/manage.py collectstatic --noinput'";
+    var cmd =  "bash -l -c 'workon capstoneTracker && PYTHONUNBUFFERED=1 python ./capstoneTracker/manage.py collectstatic --noinput'";
     var proc = exec(cmd);
     proc.stderr.on('data', function(data) {
       process.stdout.write(data);
@@ -131,10 +131,8 @@ gulp.task('runserver', function() {
     livereload();
 });*/
 
-gulp.task('default', ['jade', 'sass', 'images', 'browserify', 'icons', 'collectstatic'], function() {
-
+gulp.task('default', ['bower', 'jade', 'sass', 'images', 'browserify', 'icons', 'collectstatic'], function() {
     livereload.listen();
-
     gulp.watch(config.assets + 'sass/**/*.scss', ['sass', 'collectstatic']);
     gulp.watch(config.assets + 'templates/**/*.jade', ['jade', 'collectstatic']);
     gulp.watch(config.assets + 'images/**/*', ['images', 'collectstatic']);

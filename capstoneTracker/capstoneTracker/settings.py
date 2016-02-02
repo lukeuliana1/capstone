@@ -109,7 +109,6 @@ SITE_ID = 1
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'capstoneTracker', 'media')
 STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'capstoneTracker', 'static'),

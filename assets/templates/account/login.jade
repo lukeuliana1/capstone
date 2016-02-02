@@ -12,7 +12,7 @@ html(lang="en")
 				.authBlock
 					img.logo(src="{% static 'images/capitalone-logo-white.png' %}")
 					img.loading(src="{% static 'images/elements/loading.svg' %}")
-					.response
+					.response#response
 					form.auth {% csrf_token %}
 						.input-group.email-group
 							span.input-group-addon.fa.fa-envelope
@@ -26,6 +26,10 @@ html(lang="en")
 						.input-group.last-name-group(style="display:none")
 							span.input-group-addon.fa.fa-user
 							input.form-control(type='text', name="last_name", value='Last name', onblur="if(this.value == '') this.value = 'Last name'", onfocus="if(this.value == 'Last name') this.value = ''", required='')
+						input.user-type(type="text", name="user_type")
+						select.user-type-group.selectpicker
+							option(value="student") Student
+							option(value="employee") Employee
 						input.button.button-glow.button-rounded.button-small.submit(type="submit")
 						p.bottomText.Up
 							| Not a member? 

@@ -1,11 +1,17 @@
 jQuery = jquery = $ = require("jquery");
 csrfToken = require("./requires/csrfToken.js");
+require("bootstrap-sass");
+require("bootstrap-select");
 var register = false,
 	csrftoken = csrfToken.getCookie('csrftoken');
 $( document ).ready(function() {
+    $('.selectpicker').selectpicker({
+          size: 2
+        });
 	$(".signup").on( "click", function() {
 		$(".first-name-group").show("slow");
 		$(".last-name-group").show("slow");
+        $(".user-type-group").show("slow");
 		$(".bottomText.Up").fadeOut("slow", function(){
 			$(".bottomText.In").fadeIn("slow");
 		});
@@ -16,6 +22,7 @@ $( document ).ready(function() {
 	$(".signin").on( "click", function() {
 		$(".first-name-group").hide("slow");
 		$(".last-name-group").hide("slow");
+        $(".user-type-group").hide("slow");
 		$(".bottomText.In").fadeOut("slow", function(){
 			$(".bottomText.Up").fadeIn("slow");
 		});
@@ -28,6 +35,7 @@ $( document ).ready(function() {
         event.preventDefault();
         var urlPost;
         if (register) {
+            $(".user-type").val($('.selectpicker').val());
             urlPost = "/account/register/";
         } else {
             urlPost = "/account/login/";
