@@ -43,6 +43,7 @@ gulp.task('sass', function() {
         includePaths: [
             './resources/sass',
             config.bowerDir + '/bootstrap-sass/assets/stylesheets',
+            config.bowerDir + '/bootstrap-select/sass',
             config.bowerDir + '/font-awesome/scss',
             config.bowerDir + '/Buttons/scss']
         }))
@@ -130,7 +131,7 @@ gulp.task('runserver', function() {
     livereload();
 });*/
 
-gulp.task('default', ['jade', 'sass', 'images', 'browserify', 'icons', 'collectstatic'], function() {
+gulp.task('default', ['bower', 'jade', 'sass', 'images', 'browserify', 'icons', 'collectstatic'], function() {
     livereload.listen();
     gulp.watch(config.assets + 'sass/**/*.scss', ['sass', 'collectstatic']);
     gulp.watch(config.assets + 'templates/**/*.jade', ['jade', 'collectstatic']);

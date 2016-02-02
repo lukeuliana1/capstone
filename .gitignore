@@ -11,3 +11,5 @@ assets/.DS_Store
 *.pyc
 *.xml
 .DS_Store
+
+*.iml

@@ -1,4 +1,4 @@
-from account.forms import UserCreationForm
+from account.forms import StudentCreationForm, EmployeeCreationForm
 from account.models import UserProfile as User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -12,7 +12,7 @@ from django.template import RequestContext
 def login(request):
     if request.user.is_authenticated():
         return redirect(profile)
-    if 'email' in request.POST and 'password' in request.POST:
+    if request.method == 'POST' and 'email' in request.POST and 'password' in request.POST:
         username = request.POST.get('email', '')
         password = request.POST.get('password', '')
         user = auth.authenticate(username=username, password=password)
@@ -32,9 +32,13 @@ def register(request):
         return redirect(profile)
     args = {}
     args.update(csrf(request))
-    args['form'] = UserCreationForm()
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        if request.POST["user_type"] == "student":
+            args['form'] = StudentCreationForm()
+            form = StudentCreationForm(request.POST)
+        if request.POST["user_type"] == "employee":
+            args['form'] = EmployeeCreationForm()
+            form = EmployeeCreationForm(request.POST)
         if form.is_valid():
             try:
                 form.save()
