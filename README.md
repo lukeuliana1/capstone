@@ -5,6 +5,7 @@
 * Virtualenv (pip3 install virtualenv)
 * Virtualenvwrapper (pip3 install virtualenvwrapper)
 * MySQL
+* NodeJS (NPM)
 
 #### Windows
 ##### Be sure to add python34 and python34/Scripts to you PATH
@@ -13,6 +14,7 @@
 * Virtualenv (pip3 install virtualenv)
 * Virtualenvwrapper (pip3 install virtualenvwrapper-win)
 * MySQL
+* NodeJS (NPM)
 
 ## Localhost Setup
 1. Clone the repository:
@@ -37,9 +39,24 @@
     <p>`$ quit`
 
 7. Set up the database: (for windows do not include ./)
-    <p>`$ ./manage.py migrate`
-	  <p>`$ ./manage.py makemigrations`
-	  <p>`$ ./manage.py migrate`
+    <p>`$ ./capstoneTracker/manage.py migrate`
+	  <p>`$ ./capstoneTracker/manage.py makemigrations`
+	  <p>`$ ./capstoneTracker/manage.py migrate`
+
+7. Create Groups/Permissions: (for windows do not include ./)
+    <p>`$ ./capstoneTracker/manage.py shell < ./capstoneTracker/create_groups.py`
+    <p>`$ ./capstoneTracker/manage.py makemigrations`
+    <p>`$ ./capstoneTracker/manage.py migrate`
+8. Install npm packages
+    <p>`$ npm install`
+
+## Run Environment
+
+1. Run main Django Server
+    <p>`$ ./capstoneTracker/manage.py runserver`
+
+2. Start default gulp task (Need to open new Terminal or new tab in termial)
+    <p>`$ gulp` 
 
 ## MySQL Notes
 * When creating the root account if asked to create a root password, you must
