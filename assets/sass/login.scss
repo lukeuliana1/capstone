@@ -1,3 +1,5 @@
+@import "base";
+
 body {
 	background-color: #003A6F;
 }
@@ -8,20 +10,20 @@ body {
 }
 
 .authContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	align-self: center;
+	@include flexbox;
+	@include flex-direction(column);
+	@include justify-content(center);
+	@include align-items(center);
+	@include align-self(center);
 	
 }
 
 .authBlock {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	align-self: center;
+	@include flexbox;
+	@include flex-direction(column);
+	@include justify-content(center);
+	@include align-items(center);
+	@include align-self(center);
 	.logo {
 		margin-bottom: 15px;
 	}
@@ -35,14 +37,14 @@ body {
 	}
 }
 .auth{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	@include flexbox;
+	@include flex-direction(column);
+	@include align-items(center);
 	.user-type{
 		display: none !important;
 	}
 	.input-group, .user-type-group{
-		width: 50%;
+		width: 230px;
 		margin-top: 5px;
 		.fa-envelope{
 			padding: 2px 12px;

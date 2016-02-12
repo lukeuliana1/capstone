@@ -25,7 +25,7 @@ var config = {
 }
 
 gulp.task('jade', function() {
-    return gulp.src(['./assets/templates/**/*.jade', '!' + config.assets + 'templates/template/**/_*.jade'])
+    return gulp.src([config.assets + 'templates/**/*.jade', '!' + config.assets + 'templates/template/**/_*.jade'])
         .pipe(jade({
             pretty: true
         }))
@@ -36,7 +36,7 @@ gulp.task('jade', function() {
 
 gulp.task('sass', function() {
     
-    return gulp.src(config.assets + 'sass/**/*.scss')
+    return gulp.src([config.assets + 'sass/**/*.scss', '!' + config.assets + 'sass/**/_*.scss'])
     .pipe(sourcemaps.init())
     .pipe(sass({
         outputStyle: 'compressed',
@@ -45,7 +45,8 @@ gulp.task('sass', function() {
             config.bowerDir + '/bootstrap-sass/assets/stylesheets',
             config.bowerDir + '/bootstrap-select/sass',
             config.bowerDir + '/font-awesome/scss',
-            config.bowerDir + '/Buttons/scss']
+            config.bowerDir + '/Buttons/scss',
+            config.assets + 'sass/includes']
         }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.static + 'css/'))

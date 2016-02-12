@@ -3,7 +3,6 @@ doctype html
 html(lang="en")
 	head
 		title Capstone Tracker
-		link(rel="stylesheet" href="{% static 'css/base.css' %}")
 		link(rel="stylesheet" href="{% static 'css/login.css' %}")
 		script(type="text/javascript", src="{% static 'js/login.bundle.js' %}")
 	body
@@ -30,7 +29,7 @@ html(lang="en")
 						select.user-type-group.selectpicker
 							option(value="student") Student
 							option(value="employee") Employee
-						input.button.button-glow.button-rounded.button-small.submit(type="submit")
+						input.button.button-glow.button-rounded.button-small.submit(type="submit", value="Submit")
 						p.bottomText.Up
 							| Not a member? 
 							a.signup(href="#") Sign up now
