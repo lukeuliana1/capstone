@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'taggit',
     "account",
     "project",
+    "simple_email_confirmation",
 )
 
 MIDDLEWARE_CLASSES = (
