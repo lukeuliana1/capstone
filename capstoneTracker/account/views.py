@@ -1,5 +1,5 @@
+from django.contrib.auth.models import Group
 from account.forms import StudentCreationForm, EmployeeCreationForm
-from account.models import UserProfile as User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.core.context_processors import csrf
@@ -27,25 +27,22 @@ def login(request):
         return render_to_response('account/login.html', RequestContext(request))
 
 
-def register(request):
+def register_employee(request):
     if request.user.is_authenticated():
         return redirect(profile)
     args = {}
     args.update(csrf(request))
     if request.method == 'POST':
-        if request.POST["user_type"] == "student":
-            args['form'] = StudentCreationForm()
-            form = StudentCreationForm(request.POST)
-        if request.POST["user_type"] == "employee":
-            args['form'] = EmployeeCreationForm()
-            form = EmployeeCreationForm(request.POST)
+        args['form'] = EmployeeCreationForm()
+        form = EmployeeCreationForm(request.POST)
         if form.is_valid():
             try:
-                form.save()
+                user = form.save()
+                user.groups.add(Group.objects.get(name='Employee Users'))
                 username = request.POST.get('email', '')
                 password = request.POST.get('password', '')
-                user = auth.authenticate(username=username, password=password)
-                auth.login(request, user)
+                userAuth = auth.authenticate(username=username, password=password)
+                auth.login(request, userAuth)
                 return HttpResponse("success", content_type="text/plain")
             except IntegrityError as e:
                 if "duplicate key value violates unique constraint \"auth_user_username_key\"" in e.message:

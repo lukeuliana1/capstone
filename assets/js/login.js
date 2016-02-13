@@ -35,7 +35,6 @@ $( document ).ready(function() {
         event.preventDefault();
         var urlPost;
         if (register) {
-            $(".user-type").val($('.selectpicker').val());
             urlPost = "/account/register/";
         } else {
             urlPost = "/account/login/";

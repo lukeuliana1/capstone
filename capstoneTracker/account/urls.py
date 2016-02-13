@@ -6,7 +6,7 @@ urlpatterns = patterns('',
    url(r'^$', RedirectView.as_view(url='profile', permanent=False), name='index'),			
    url(r'^login/$', views.login),
    url(r'^logout/$', views.logout),
-   url(r'^register/$', views.register),
+   url(r'^register/$', views.register_employee),
    url(r'^profile/$', views.profile),
    url(r'^profile/.*$', views.profile)
    )
