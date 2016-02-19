@@ -1,17 +1,21 @@
 from django.contrib.auth.models import Group
-from account.forms import StudentCreationForm, EmployeeCreationForm
 from django.contrib import auth
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.context_processors import csrf
 from django.db import IntegrityError
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
+from django.contrib.auth import login as system_auth
+from account.forms import StudentCreationForm, EmployeeCreationForm
+from django.contrib.auth import get_user_model
+from account.utils import send_confirmation_email
 
+def auth_check(user):
+    return (not user.is_authenticated())
 
+@user_passes_test(auth_check, login_url='/account/profile/')
 def login(request):
-    if request.user.is_authenticated():
-        return redirect(profile)
     if request.method == 'POST' and 'email' in request.POST and 'password' in request.POST:
         username = request.POST.get('email', '')
         password = request.POST.get('password', '')
@@ -27,31 +31,36 @@ def login(request):
         return render_to_response('account/login.html', RequestContext(request))
 
 
+@user_passes_test(auth_check, login_url='/account/profile/')
 def register_employee(request):
-    if request.user.is_authenticated():
-        return redirect(profile)
     args = {}
     args.update(csrf(request))
-    if request.method == 'POST':
+    if request.method == 'POST' and 'email' in request.POST:
         args['form'] = EmployeeCreationForm()
         form = EmployeeCreationForm(request.POST)
         if form.is_valid():
             try:
                 user = form.save()
                 user.groups.add(Group.objects.get(name='Employee Users'))
-                username = request.POST.get('email', '')
-                password = request.POST.get('password', '')
-                userAuth = auth.authenticate(username=username, password=password)
-                auth.login(request, userAuth)
+                send_confirmation_email(user)
                 return HttpResponse("success", content_type="text/plain")
-            except IntegrityError as e:
+            except IntegrityError as e: #Duplicate email error
                 if "duplicate key value violates unique constraint \"auth_user_username_key\"" in e.message:
                     return HttpResponse("Email is already taken", content_type="text/plain")
                 return HttpResponse(e.message, content_type="text/plain")
-        else:
+        else: #Form errors
             # Check for errors
             return JsonResponse(form.errors)
     return render_to_response('account/login.html', RequestContext(request))
+
+def confirm_email(request):
+    args = {}
+    if request.method == "GET" and 'key' in request.GET and 'user' in request.GET:
+        user = get_user_model().objects.get(username=request.GET["user"])
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
+        user.confirm_email(request.GET["key"])
+        system_auth(request, user)
+        return redirect(profile)
 
 @login_required(login_url='/account/login/')
 def profile(request):
