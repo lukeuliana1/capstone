@@ -26,7 +26,7 @@ def login(request):
             # return HttpResponseRedirect(request.GET["next"])
             return HttpResponse("success", content_type="text/plain")
         else:
-            return HttpResponse("Either Password or Email is wrong", content_type="text/plain")
+            return HttpResponse("Credentials are not valid", content_type="text/plain")
     else:
         return render_to_response('account/login.html', RequestContext(request))
 
@@ -56,11 +56,16 @@ def register_employee(request):
 def confirm_email(request):
     args = {}
     if request.method == "GET" and 'key' in request.GET and 'user' in request.GET:
-        user = get_user_model().objects.get(username=request.GET["user"])
-        user.backend = 'django.contrib.auth.backends.ModelBackend'
-        user.confirm_email(request.GET["key"])
-        system_auth(request, user)
-        return redirect(profile)
+        try:
+            user = get_user_model().objects.get(username=request.GET["user"])
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
+            user.confirm_email(request.GET["key"])
+            system_auth(request, user)
+            return redirect(profile)
+        except:
+            raise Http404("Wrong data, reject request")
+
+        
 
 @login_required(login_url='/account/login/')
 def profile(request):

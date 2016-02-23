@@ -25,6 +25,7 @@
     "bootstrap-sass": "~3.3.6",
     "font-awesome": "~4.5.0",
     "Buttons": "~2.0.0",
-    "bootstrap-select": "~1.9.4"
+    "bootstrap-select": "~1.9.4",
+    "flip": "~1.0.20"
   }
 }

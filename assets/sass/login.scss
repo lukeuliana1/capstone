@@ -1,71 +1,135 @@
 @import "base";
 
+
 body {
 	background-color: #003A6F;
 }
 
-.row, .authContainer{
+.row, .container{
 	height: 100%;
 
 }
 
-.authContainer {
+.auth-container {
+	min-height: 100%;
 	@include flexbox;
 	@include flex-direction(column);
 	@include justify-content(center);
 	@include align-items(center);
-	@include align-self(center);
-	
-}
-
-.authBlock {
-	@include flexbox;
-	@include flex-direction(column);
-	@include justify-content(center);
-	@include align-items(center);
-	@include align-self(center);
 	.logo {
+		width: 230px;
+		height: 85px;
 		margin-bottom: 15px;
 	}
-	.loading {
-		display: none;
-		height: 40px;
-		width: 50px;
+	.subtitle {
+		font-family: 'Gotham';
+		color: #FFF;
+		font-size: 2em;
 	}
 	.response {
 		text-align: center;
 	}
 }
-.auth{
-	@include flexbox;
-	@include flex-direction(column);
-	@include align-items(center);
-	.user-type{
-		display: none !important;
-	}
-	.input-group, .user-type-group{
-		width: 230px;
-		margin-top: 5px;
-		.fa-envelope{
-			padding: 2px 12px;
+.auth-block{
+	display: block;
+	margin: 15px 0 35px 0;
+	width: 280px;
+	height: 266px;
+	.inner-container {
+		@include box-shadow(2px, -1px, 8px, 0px, rgba(0,0,0,0.75));
+		padding: 25px;
+		border-radius: 5px;
+		position: relative;
+		background-color: #FFF;
+		.response {
+			height: 20px;
+		    margin: 12px 0px 3px 0;
+		}
+		.label {
+			position: relative;
+			text-align: left;
+			font-family: 'Gotham';
+			color: #333;
+			font-size: 1.3em;
+			font-weight: normal;
+			height: 35px;
+			padding-left: 35px;
+			margin-bottom: 0;
+		}
+		.label:before {
+			position: absolute;
+			left: 0;
+			top: 0;
+		    content: " ";
+		    width: 28px;
+		    height: 28px;
+		    background-size: 28px;
+		    background-image: url("/static/fonts/custom-icons/login.png");
+		    background-position: 0 0;
+		}
+		.input-group {
+			width: 230px;
+			margin-top: 10px;
+			input {
+				border-width: 2px;
+				border-radius: 2px !important;
+			}
+		}
+		.input-group.reverse-side-email-group {
+			margin-top: 35px;
+		}
+		.input-group.button-group {
+			margin-top: 20px;
+			input {
+				font-size: 15px;
+				width: 100%;
+			}
+		}
+		.loading {
+			position: absolute;
+			height: 32px;
+			width: 32px;
+			bottom: 50px;
+			left: 0%;
+			right: 0%;
+			margin: 0 auto;
+			z-index: -1;
+		}
+		.sub-auth {
+			position: absolute;
+			bottom: 25px;
+			margin: 0;
+			.forgot-password, .go-back {
+				color: #2980CC;
+				&:hover {
+					color: #2461A6;
+					text-decoration: none;
+				}
+			}
 		}
 	}
-	div.btn-group.bootstrap-select.user-type-group {
-		display: none;
-		width: 150px;
-	}
-	.submit{ 
-		margin-top: 10px;
-	}
-	.bottomText {
-		margin-top: 10px;
-		color: white;
-		a {
-			color: #2980CC;
-		}
-		a:hover {
-			color: #337ab7;
-			text-decoration: none;
-		}
+}
+
+.sub-container {
+	width: 60%;
+	padding-left: 25px;
+	.sign-up-toggle {
+			width: 190px;
+			margin-top: 15px;
+			i.fa-plus-circle {
+				vertical-align: super;
+	    		font-size: 2.5em;
+				color: #008B8F;
+				background-color: #FFF;
+				border-radius: 50%;
+	    		line-height: 20px;
+	    		width: 29px;
+			}
+			p {
+				padding-left: 5px;
+				display: inline-block;
+				width: 80%;
+				color: #FFF;
+			}
 	}
 }

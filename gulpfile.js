@@ -53,6 +53,17 @@ gulp.task('sass', function() {
     .pipe(livereload());
 });
 
+
+gulp.task('fonts', function() {
+    return gulp.src(config.assets + 'fonts/**/*')
+    .pipe(gulp.dest(config.static + 'fonts/'));
+});
+
+gulp.task('icons', function() { 
+    return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
+        .pipe(gulp.dest(config.static + 'fonts/')); 
+});
+
 gulp.task('browserify', function(done) {
     glob(config.assets + 'js/**.js', function(err, files) {
         if (err) done(err);
@@ -84,10 +95,6 @@ gulp.task('images', function() {
         .pipe(livereload());;
 });
 
-gulp.task('icons', function() { 
-    return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
-        .pipe(gulp.dest(config.static + 'fonts/')); 
-});
 
 gulp.task('bower_components', function() {
     return gulp.src(bowerFiles())
@@ -132,7 +139,7 @@ gulp.task('runserver', function() {
     livereload();
 });*/
 
-gulp.task('default', ['bower', 'jade', 'sass', 'images', 'browserify', 'icons', 'collectstatic'], function() {
+gulp.task('default', ['bower', 'jade', 'sass', 'images', 'browserify', 'icons', 'fonts', 'collectstatic'], function() {
     livereload.listen();
     gulp.watch(config.assets + 'sass/**/*.scss', ['sass', 'collectstatic']);
     gulp.watch(config.assets + 'templates/**/*.jade', ['jade', 'collectstatic']);

@@ -7,28 +7,35 @@ html(lang="en")
 		script(type="text/javascript", src="{% static 'js/login.bundle.js' %}")
 	body
 		.row
-			.col-lg-4.col-lg-offset-4.authContainer
-				.authBlock
+			.col-lg-4.col-lg-offset-4.container
+				.auth-container
 					img.logo(src="{% static 'images/capitalone-logo-white.png' %}")
-					img.loading(src="{% static 'images/elements/loading.svg' %}")
-					.response#response
-					form.auth {% csrf_token %}
-						.input-group.email-group
-							span.input-group-addon.fa.fa-envelope
-							input.form-control(type='email', name="email", value='Email address', onblur="if(this.value == '') this.value = 'Email address'", onfocus="if(this.value == 'Email address') this.value = ''", required='')
-						.input-group.password-group
-							span.input-group-addon.fa.fa-lock
-							input.form-control(type='password', name="password", value='password', onblur="if(this.value == '') this.value = 'password'", onfocus="if(this.value == 'password') this.value = ''", required='')
-						.input-group.first-name-group(style="display:none")
-							span.input-group-addon.fa.fa-user
-							input.form-control(type='text', name="first_name", value='First name', onblur="if(this.value == '') this.value = 'First name'", onfocus="if(this.value == 'First name') this.value = ''", required='')
-						.input-group.last-name-group(style="display:none")
-							span.input-group-addon.fa.fa-user
-							input.form-control(type='text', name="last_name", value='Last name', onblur="if(this.value == '') this.value = 'Last name'", onfocus="if(this.value == 'Last name') this.value = ''", required='')
-						input.button.button-glow.button-rounded.button-small.submit(type="submit", value="Submit")
-						p.bottomText.Up
-							| Not a member? 
-							a.signup(href="#") Sign up now
-						p.bottomText.In(style="display:none")
-							| Already a member? 
-							a.signin(href="#") Sign in now
+					.subtitle Capstone Tracker
+					.auth-block {% csrf_token %}
+						form.inner-container.front.sign-in-form
+							p.label Sign In
+							.response#response
+							.input-group.email-group
+								input.form-control(type='email', name="email", value='Email address', onblur="if(this.value == '') this.value = 'Email address'", onfocus="if(this.value == 'Email address') this.value = ''", required='')
+							.input-group.password-group
+								input.form-control(type='password', name="password", value='password', onblur="if(this.value == '') this.value = 'password'", onfocus="if(this.value == 'password') this.value = ''", required='')
+							.input-group.button-group
+								input.button.button-action.button-rounded.button-small.sign-in-button.submit(type="submit", value="Submit")
+							p.sub-auth Forgot your 
+								a.forgot-password(href="#") password
+								|&thinsp;?
+						form.inner-container.back.reverse-form
+							p.label.reverse-side-label
+							.response#reverse-response
+							.input-group.email-group.reverse-side-email-group
+								input.form-control(type='email', name="email", value='Email address', onblur="if(this.value == '') this.value = 'Email address'", onfocus="if(this.value == 'Email address') this.value = ''", required='')
+							.input-group.button-group
+								input.button.button-action.button-rounded.button-small.sign-in-button.submit(type="submit", value="Submit")
+							p.sub-auth Changed your mind?
+								br
+								| Go Back &nbsp;
+								a.go-back(href="#") Sign In
+					.sub-container
+						a.sign-up-toggle(href="#")
+							i.fa.fa-plus-circle
+							p Sign up for Capital One Employee Account
