@@ -42,7 +42,9 @@ body {
 		position: relative;
 		background-color: #FFF;
 		.response {
-			height: 20px;
+			min-height: 20px;
+			max-height: 38px;
+			height: auto;
 		    margin: 12px 0px 3px 0;
 		}
 		.label {
@@ -76,7 +78,7 @@ body {
 			}
 		}
 		.input-group.reverse-side-email-group {
-			margin-top: 35px;
+			margin-top: 10px;
 		}
 		.input-group.button-group {
 			margin-top: 20px;
@@ -85,19 +87,9 @@ body {
 				width: 100%;
 			}
 		}
-		.loading {
-			position: absolute;
-			height: 32px;
-			width: 32px;
-			bottom: 50px;
-			left: 0%;
-			right: 0%;
-			margin: 0 auto;
-			z-index: -1;
-		}
 		.sub-auth {
 			position: absolute;
-			bottom: 25px;
+			bottom: 20px;
 			margin: 0;
 			.forgot-password, .go-back {
 				color: #2980CC;
@@ -131,5 +123,30 @@ body {
 				width: 80%;
 				color: #FFF;
 			}
+	}
+}
+
+//Reverse form
+
+form.inner-container.back.reverse-form {
+	.response {
+		
+	}
+}
+
+//Change password part
+
+form.inner-container.change-password-form {
+	.response#front-response {
+		color: #dd1e31;
+		height: auto;
+		width: 80%;
+    	margin: 12px auto;
+	}
+	.input-group.password-group.change-password-group{
+		margin: 0;
+	}
+	.change-password-label {
+		margin: 5px 0 5px 0;
 	}
 }

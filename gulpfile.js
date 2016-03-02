@@ -34,6 +34,13 @@ gulp.task('jade', function() {
         .pipe(livereload());
 });
 
+gulp.task('email-txt-tamplates', function() {
+    return gulp.src([config.assets + 'templates/email/*.txt'])
+        .on('error', console.log)
+        .pipe(gulp.dest(config.templates + 'email/'))
+        .pipe(livereload());
+});
+
 gulp.task('sass', function() {
     
     return gulp.src([config.assets + 'sass/**/*.scss', '!' + config.assets + 'sass/**/_*.scss'])
@@ -139,10 +146,11 @@ gulp.task('runserver', function() {
     livereload();
 });*/
 
-gulp.task('default', ['bower', 'jade', 'sass', 'images', 'browserify', 'icons', 'fonts', 'collectstatic'], function() {
+gulp.task('default', ['bower', 'jade', 'email-txt-tamplates', 'sass', 'images', 'browserify', 'icons', 'fonts', 'collectstatic'], function() {
     livereload.listen();
     gulp.watch(config.assets + 'sass/**/*.scss', ['sass', 'collectstatic']);
     gulp.watch(config.assets + 'templates/**/*.jade', ['jade', 'collectstatic']);
+    gulp.watch(config.assets + 'templates/email/*.txt', ['email-txt-tamplates', 'collectstatic']);
     gulp.watch(config.assets + 'images/**/*', ['images', 'collectstatic']);
     gulp.watch(config.assets + 'js/**/*', ['browserify', 'collectstatic']);
 });
