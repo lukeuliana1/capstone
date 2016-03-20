@@ -13,10 +13,11 @@ class Project(models.Model):
     projects = models.Manager()
     title = models.CharField(max_length=200)
     slug = models.SlugField(
-            max_length=200, unique=True, blank=True, editable=True)
+            max_length=200, unique=True, blank=False, editable=True)
     students = models.ForeignKey(Student)
     employees = models.ForeignKey(Employee)
-        
+    
+    brief_description = models.CharField(max_length=300)
     description = models.TextField()
     github = models.URLField(blank=True)
     image = models.ImageField(upload_to=image_upload_path, blank=True)
@@ -32,7 +33,7 @@ class Project(models.Model):
         ordering = ["-created"]
 
     def save(self, *args, **kwargs):
-        super(Tours, self).save(*args, **kwargs)
+        super(Project, self).save(*args, **kwargs)
         if self.slug == "":
             self.slug = slugify(self.title)
             self.slug = "-".join((self.slug, str(self.id)))
