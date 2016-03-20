@@ -27,11 +27,13 @@
    <p>
 3. Activate virtual environment:
    <p>`$ workon capstoneTracker`
-4. Navigate into capstoneTracker directory:
+4. Install package dependencies:
+   <p>`$ pip install -r requirements.txt`
+5. Navigate into capstoneTracker directory:
    <p>`$ cd capstoneTracker`
-5. Migrate database (update database):
+6. Migrate database (update database):
    <p>`$ ./manage.py migrate`
-6. Launch the server:
+7. Launch the server:
    <p>`$ ./manage.py runserver`
 
 
