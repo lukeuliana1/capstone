@@ -24,6 +24,7 @@
 3. Start Gulp:
    <p>`$ gulp`
 4. Open new terminal
+   <p>
 3. Activate virtual environment:
    <p>`$ workon capstoneTracker`
 4. Navigate into capstoneTracker directory:
