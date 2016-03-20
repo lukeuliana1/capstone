@@ -18,19 +18,22 @@ ul.main-nav.nav {
 	@include align-items(center);
 	li {
 		margin-left: 5%;
-		font-size: 3.3em;
-		i {
-			color: #808080;
+		a {
+			background-color: transparent;
+		}
+		img {
+			width: 45px;
+			height: 45px;
 		}
 	}
 	li.user {
 		display: inline-block;
 		p.username {
 			display: inline-block;
+			margin: 0 0 0 5px;
 			font-size: 20px;
 			color: #344553;
 			vertical-align: middle;
-			margin: 0;
 		}
 	}
 }
@@ -47,7 +50,7 @@ ul.main-nav.nav {
 			color: #FFF;
 			font-size: 20px;
 			&:hover {
-				background-color: inherit !important;
+				background-color: transparent !important;
 			}
 		}
 

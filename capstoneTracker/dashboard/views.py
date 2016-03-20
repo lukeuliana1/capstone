@@ -7,4 +7,4 @@ from django.template import RequestContext
 
 @login_required(login_url='/account/login/')
 def description_page(request):
-    return render_to_response('dashboard/dashboard.html', RequestContext(request))
+    return render_to_response('dashboard/dashboard.html', {"project":True}, RequestContext(request))

@@ -9,21 +9,20 @@ html(lang="en")
 		img(src="{% static 'images/logo.png' %}").logo
 		ul.main-nav.nav
 			li
-				i.fa.fa-globe
+				a(href="#")
+					img(src="{% static 'images/elements/menu-icons/globe.svg' %}").globe-icon
 			li
-				i.fa.fa-file-text
+				a(href="#")
+					img(src="{% static 'images/elements/menu-icons/folder.svg' %}").folder-icon
 			li.user
-				i.fa.fa-user
-				p.username Boris Krasnov
-		ul.sub-nav.nav
-			li 
-				a(href="#") Description
-			li 
-				a(href="#") Team
-			li 
-				a(href="#") Sponsors
-			li 
-				a(href="#") Github
-			li 
-				a(href="#") Trello
+				a(href="#")
+					img(src="{% static 'images/elements/menu-icons/profile.svg' %}").profile-icon
+					p.username Boris Krasnov
+		{% if project %}
+		include project
+		{% elif global %}
+		include global
+		{% else %}
+		include profile
+		{% endif %}
 
