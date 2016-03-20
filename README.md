@@ -16,6 +16,22 @@
 * MySQL
 * NodeJS (NPM)
 
+## Launch a project
+1. Navigate into capstone repo:
+   <p>`$ cd capstone`
+2. Pull latest updates from Github repo:
+   <p>`$ git pull`
+3. Start Gulp:
+   <p>`$ gulp`
+4. Open new terminal
+3. Activate virtual environment:
+   <p>`$ workon capstoneTracker`
+4. Navigate into capstoneTracker directory:
+   <p>`$ cd capstoneTracker`
+5. Launch the server:
+   <p>`$ ./manage.py runserver`
+
+
 ## Localhost Setup
 1. Clone the repository:
    <p>`$ git clone https://github.com/yeralin/capstone.git capstone`
