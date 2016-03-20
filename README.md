@@ -29,7 +29,9 @@
    <p>`$ workon capstoneTracker`
 4. Navigate into capstoneTracker directory:
    <p>`$ cd capstoneTracker`
-5. Launch the server:
+5. Migrate database (update database):
+   <p>`$ ./manage.py migrate`
+6. Launch the server:
    <p>`$ ./manage.py runserver`
 
 
