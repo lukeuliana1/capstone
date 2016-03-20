@@ -1,0 +1,29 @@
+{% load staticfiles %}
+doctype html
+html(lang="en")
+	head
+		title Capstone Tracker
+		link(rel="stylesheet" href="{% static 'css/dashboard.css' %}")
+		script(type="text/javascript", src="{% static 'js/dashboard.bundle.js' %}")
+	body
+		img(src="{% static 'images/logo.png' %}").logo
+		ul.main-nav.nav
+			li
+				i.fa.fa-globe
+			li
+				i.fa.fa-file-text
+			li.user
+				i.fa.fa-user
+				p.username Boris Krasnov
+		ul.sub-nav.nav
+			li 
+				a(href="#") Description
+			li 
+				a(href="#") Team
+			li 
+				a(href="#") Sponsors
+			li 
+				a(href="#") Github
+			li 
+				a(href="#") Trello
+

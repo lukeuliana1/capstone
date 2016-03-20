@@ -1,0 +1,58 @@
+@import "base";
+* {
+	font-family: 'Gotham';
+}
+.logo {
+	width: 12%;
+	position: absolute;
+	top: 15px;
+	left: 50px;
+}
+ul.main-nav.nav {
+	background-color: #FFF;
+	height: 100px;
+	padding: 0 8%;
+	@include flexbox;
+	@include flex-direction(row);
+	@include justify-content(flex-end);
+	@include align-items(center);
+	li {
+		margin-left: 5%;
+		font-size: 3.3em;
+		i {
+			color: #808080;
+		}
+	}
+	li.user {
+		display: inline-block;
+		p.username {
+			display: inline-block;
+			font-size: 20px;
+			color: #344553;
+			vertical-align: middle;
+			margin: 0;
+		}
+	}
+}
+.sub-nav {
+	background-color: #344553;
+	height: 45px;
+	padding: 0 13%;
+	@include flexbox;
+	@include flex-direction(row);
+	@include justify-content(space-between);
+	@include align-items(center);
+	li {
+		a {
+			color: #FFF;
+			font-size: 20px;
+			&:hover {
+				background-color: inherit !important;
+			}
+		}
+
+		
+	}
+	
+
+}
