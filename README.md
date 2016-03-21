@@ -21,19 +21,21 @@
    <p>`$ cd capstone`
 2. Pull latest updates from Github repo:
    <p>`$ git pull`
-3. Start Gulp:
+3. Install gulp and bower dependencies:
+   <p>`$ sudo npm install && bower install`
+4. Start Gulp:
    <p>`$ gulp`
-4. Open new terminal
+5. Open new terminal
    <p>
-3. Activate virtual environment:
+6. Activate virtual environment:
    <p>`$ workon capstoneTracker`
-4. Install package dependencies:
+7. Install package dependencies:
    <p>`$ pip install -r requirements.txt`
-5. Navigate into capstoneTracker directory:
+8. Navigate into capstoneTracker directory:
    <p>`$ cd capstoneTracker`
-6. Migrate database (update database):
+9. Migrate database (update database):
    <p>`$ ./manage.py migrate`
-7. Launch the server:
+10. Launch the server:
    <p>`$ ./manage.py runserver`
 
 
@@ -69,15 +71,7 @@
     <p>`$ ./capstoneTracker/manage.py makemigrations`
     <p>`$ ./capstoneTracker/manage.py migrate`
 8. Install npm packages
-    <p>`$ npm install`
-
-## Run Environment
-
-1. Run main Django Server
-    <p>`$ ./capstoneTracker/manage.py runserver`
-
-2. Start default gulp task (Need to open new Terminal or new tab in termial)
-    <p>`$ gulp` 
+    <p>`$ sudo npm install`
 
 ## MySQL Notes
 * When creating the root account if asked to create a root password, you must
