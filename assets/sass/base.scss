@@ -1,11 +1,25 @@
-$font-family-base: 'Raleway', sans-serif;
 @import "bootstrap";
 @import "bootstrap-select";
 @import "font-awesome";
 @import "buttons";
+@import "_flexbox";
+@import "_font";
+@import "_box-shadow";
+@include font-face(Gotham, fonts/gotham, null, null, otf);
 
 html, body {
   height: 100%;
+}
+
+* {
+	@include font-smoothing(antialiased);
+}
+
+.button-action {
+	background-color: #1CC531;
+	&:hover, &:focus {
+		background-color: #16A528;
+	}
 }
 
 .input-group {

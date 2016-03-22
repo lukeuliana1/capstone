@@ -37,7 +37,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'taggit',
     "account",
+    "project",
+    "simple_email_confirmation",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,6 +53,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+    )
 
 
 ROOT_URLCONF = 'capstoneTracker.urls'
@@ -69,6 +76,14 @@ TEMPLATES = [
         },
     },
 ]
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+DEFAULT_FROM_EMAIL = 'psucapstonetracker@gmail.com'
+SERVER_EMAIL = 'psucapstonetracker@gmail.com'
+EMAIL_HOST_USER = 'psucapstonetracker@gmail.com'
+EMAIL_HOST_PASSWORD = 'alverbanec'
+EMAIL_PORT = 587
 
 WSGI_APPLICATION = 'capstoneTracker.wsgi.application'
 
@@ -102,6 +117,8 @@ USE_L10N = True
 USE_TZ = True
 
 SITE_ID = 1
+
+SITE_URL = "localhost:8000"
 
 
 # Static files (CSS, JavaScript, Images)

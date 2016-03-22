@@ -25,7 +25,7 @@ var config = {
 }
 
 gulp.task('jade', function() {
-    return gulp.src(['./assets/templates/**/*.jade', '!' + config.assets + 'templates/template/**/_*.jade'])
+    return gulp.src([config.assets + 'templates/**/*.jade', '!' + config.assets + 'templates/template/**/_*.jade'])
         .pipe(jade({
             pretty: true
         }))
@@ -34,9 +34,16 @@ gulp.task('jade', function() {
         .pipe(livereload());
 });
 
+gulp.task('email-txt-tamplates', function() {
+    return gulp.src([config.assets + 'templates/email/*.txt'])
+        .on('error', console.log)
+        .pipe(gulp.dest(config.templates + 'email/'))
+        .pipe(livereload());
+});
+
 gulp.task('sass', function() {
     
-    return gulp.src(config.assets + 'sass/**/*.scss')
+    return gulp.src([config.assets + 'sass/**/*.scss', '!' + config.assets + 'sass/**/_*.scss'])
     .pipe(sourcemaps.init())
     .pipe(sass({
         outputStyle: 'compressed',
@@ -45,11 +52,23 @@ gulp.task('sass', function() {
             config.bowerDir + '/bootstrap-sass/assets/stylesheets',
             config.bowerDir + '/bootstrap-select/sass',
             config.bowerDir + '/font-awesome/scss',
-            config.bowerDir + '/Buttons/scss']
+            config.bowerDir + '/Buttons/scss',
+            config.assets + 'sass/includes']
         }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.static + 'css/'))
     .pipe(livereload());
+});
+
+
+gulp.task('fonts', function() {
+    return gulp.src(config.assets + 'fonts/**/*')
+    .pipe(gulp.dest(config.static + 'fonts/'));
+});
+
+gulp.task('icons', function() { 
+    return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
+        .pipe(gulp.dest(config.static + 'fonts/')); 
 });
 
 gulp.task('browserify', function(done) {
@@ -83,10 +102,6 @@ gulp.task('images', function() {
         .pipe(livereload());;
 });
 
-gulp.task('icons', function() { 
-    return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
-        .pipe(gulp.dest(config.static + 'fonts/')); 
-});
 
 gulp.task('bower_components', function() {
     return gulp.src(bowerFiles())
@@ -131,10 +146,11 @@ gulp.task('runserver', function() {
     livereload();
 });*/
 
-gulp.task('default', ['bower', 'jade', 'sass', 'images', 'browserify', 'icons', 'collectstatic'], function() {
+gulp.task('default', ['bower', 'jade', 'email-txt-tamplates', 'sass', 'images', 'browserify', 'icons', 'fonts', 'collectstatic'], function() {
     livereload.listen();
     gulp.watch(config.assets + 'sass/**/*.scss', ['sass', 'collectstatic']);
     gulp.watch(config.assets + 'templates/**/*.jade', ['jade', 'collectstatic']);
+    gulp.watch(config.assets + 'templates/email/*.txt', ['email-txt-tamplates', 'collectstatic']);
     gulp.watch(config.assets + 'images/**/*', ['images', 'collectstatic']);
     gulp.watch(config.assets + 'js/**/*', ['browserify', 'collectstatic']);
 });

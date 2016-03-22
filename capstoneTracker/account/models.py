@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser, User
+from simple_email_confirmation import SimpleEmailConfirmationUserMixin
 from django.db import models
 
 
@@ -18,7 +19,7 @@ class School(models.Model):
         return self.name
 
 
-class UserProfile(AbstractUser):
+class UserProfile(SimpleEmailConfirmationUserMixin, AbstractUser):
 	pass
     #someAdditionalVar = models.BooleanField(default=False)
 
