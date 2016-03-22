@@ -50,9 +50,10 @@ ul.main-nav.nav {
 	position: relative;
 	@include flexbox;
 	@include flex-direction(row);
-	@include justify-content(space-between);
+	@include justify-content(center);
 	@include align-items(center);
 	li {
+		margin: 0 6%;
 		a {
 			color: #FFF;
 			font-size: 20px;
@@ -79,22 +80,19 @@ ul.main-nav.nav {
 	}
 }
 .first:after {
-	left: 25.8%;
+	left: 19%;
 }
 .second:after {
-	left: 41.1%;
+	left: 36.1%;
 }
 .third:after {
-    left: 55.6%;
+    left: 52%;
 }
 .fourth:after {
-	left: 70.6%;
+	left: 68.4%;
 }
 .fifth:after {
-	left: 55.6%;
-}
-.sixth:after {
-	left: 84.5%;
+	left: 83.6%;
 }
 
 .dashboard-container {
