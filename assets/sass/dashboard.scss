@@ -4,7 +4,7 @@
 	font-family: 'Gotham';
 }
 .logo {
-	width: 12%;
+	width: 160px;
 	position: absolute;
 	top: 15px;
 	left: 50px;
@@ -13,35 +13,41 @@ ul.main-nav.nav {
 	background-color: #FFF;
 	height: 100px;
 	padding: 0 8%;
-	@include flexbox;
-	@include flex-direction(row);
-	@include justify-content(flex-end);
-	@include align-items(center);
-	li {
-		margin-left: 5%;
-		a {
-			background-color: transparent;
+	.menu {
+		height: 100%;
+		@include flexbox;
+		@include flex-direction(row);
+		@include justify-content(flex-end);
+		@include align-items(center);
+		li {
+			margin-left: 5%;
+			a {
+				text-decoration: none;
+				background-color: transparent;
+			}
+			img {
+				width: 45px;
+				height: 45px;
+			}
 		}
-		img {
-			width: 45px;
-			height: 45px;
-		}
-	}
-	li.user {
-		display: inline-block;
-		p.username {
+		li.user {
 			display: inline-block;
-			margin: 0 0 0 5px;
-			font-size: 140%;
-			color: #344553;
-			vertical-align: middle;
+			p.username {
+				display: inline-block;
+				margin: 0 0 0 5px;
+				font-size: 140%;
+				color: #344553;
+				vertical-align: middle;
+			}
 		}
 	}
+	
 }
 .sub-nav {
 	background-color: #344553;
 	height: 45px;
 	padding: 0 13%;
+	position: relative;
 	@include flexbox;
 	@include flex-direction(row);
 	@include justify-content(space-between);
@@ -58,15 +64,46 @@ ul.main-nav.nav {
 		
 	}
 	
-
+	&:after{
+		top: 100%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-top-color: #344553;
+		border-width: 16px;
+		margin-left: -20px;
+		@include transition(left 0.7s ease);
+	}
+}
+.first:after {
+	left: 25.8%;
+}
+.second:after {
+	left: 41.1%;
+}
+.third:after {
+    left: 55.6%;
+}
+.fourth:after {
+	left: 70.6%;
+}
+.fifth:after {
+	left: 55.6%;
+}
+.sixth:after {
+	left: 84.5%;
 }
 
 .dashboard-container {
 	padding: 0 4% 2% 4%;
-	.description-title, .description-brief{
-			color: #344553;
+	.title, .brief{
+		padding-left: 20px;
+		color: #344553;
 	}
-	p.description-brief {
+	p.brief {
 		font-size: 20px;
 	}
 	.description-container {
@@ -80,14 +117,14 @@ ul.main-nav.nav {
 			font-size: 17px;
 		}
 	}
-	.team-container {
+	.participants {
 		@include flexbox;
 		@include flex-direction(row);
-		@include justify-content(space-between);
+		@include justify-content(flex-start);
 		@include align-items(center);
 		@include flex-wrap(wrap);
 		.user {
-			
+			margin: 0 auto;
 			i {
 				font-size: 3.3em;
 				color: #808080;

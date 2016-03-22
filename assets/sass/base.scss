@@ -5,7 +5,8 @@
 @import "_flexbox";
 @import "_font";
 @import "_box-shadow";
-@include font-face(Gotham, fonts/gotham, null, null, otf);
+@import "_custon-mixins.scss"; //Please add you mixins into this file
+@include font-face(Gotham, "../fonts/gotham/gotham-light", null, null, otf);
 
 html, body {
   height: 100%;
