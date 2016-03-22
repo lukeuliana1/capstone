@@ -1,4 +1,5 @@
 @import "base";
+@import "jquery.fullPage.scss";
 * {
 	font-family: 'Gotham';
 }
@@ -31,7 +32,7 @@ ul.main-nav.nav {
 		p.username {
 			display: inline-block;
 			margin: 0 0 0 5px;
-			font-size: 20px;
+			font-size: 140%;
 			color: #344553;
 			vertical-align: middle;
 		}
@@ -49,7 +50,7 @@ ul.main-nav.nav {
 		a {
 			color: #FFF;
 			font-size: 20px;
-			&:hover {
+			&:hover, &:focus {
 				background-color: transparent !important;
 			}
 		}
@@ -61,24 +62,25 @@ ul.main-nav.nav {
 }
 
 .dashboard-container {
-	padding: 0 4%;
-	h1 {
+	padding: 0 4% 2% 4%;
+	.description-title, .description-brief{
 			color: #344553;
 	}
-	p{
-
+	p.description-brief {
+		font-size: 20px;
 	}
-	.description-container{
+	.description-container {
 		@include box-shadow(2px, -1px, 8px, 0px, rgba(0,0,0,0.75));
 		padding: 25px;
 		border-radius: 5px;
 		position: relative;
 		background-color: #344553;
-		p{
+		p.description-text {
 			color: #FFF;
+			font-size: 17px;
 		}
 	}
-	.team-container{
+	.team-container {
 		@include flexbox;
 		@include flex-direction(row);
 		@include justify-content(space-between);

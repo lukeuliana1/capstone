@@ -1,11 +1,21 @@
 ul.sub-nav.nav
 	li 
-		a(href="#") Description
+		a(href="#").description-section Description
 	li 
-		a(href="#") Team
+		a(href="#").team-section Team
 	li 
-		a(href="#") Sponsors
+		a(href="#").sponsors-section Sponsors
 	li 
-		a(href="#") Github
+		a(href="#").github-section Github
 	li 
-		a(href="#") Trello
+		a(href="#").trello-section Trello
+.row.slider
+	.section
+		.slide.col-lg-10
+			include description
+		.slide.col-lg-10
+			include team
+		.slide.col-lg-10
+			include sponsors
+		.slide.col-lg-10
+			include github
