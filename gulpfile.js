@@ -53,6 +53,7 @@ gulp.task('sass', function() {
             config.bowerDir + '/bootstrap-select/sass',
             config.bowerDir + '/font-awesome/scss',
             config.bowerDir + '/Buttons/scss',
+            config.bowerDir + '/fullpage.js',
             config.assets + 'sass/includes']
         }))
     .pipe(sourcemaps.write('.'))
