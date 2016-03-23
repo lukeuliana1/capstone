@@ -14,8 +14,8 @@ parseLink = function() {
     return -1;
 }
 
-ajaxRequest = function() {
-        var caller = $(event.currentTarget);
+ajaxRequest = function(target) {
+        var caller = $(target);
         $(".response").html("");
         if(caller.hasClass("sign-in-form")) { //Front form, user is signing in
             var ajaxProc = {
@@ -126,12 +126,12 @@ $( document ).ready(function() {
 
     $(".sign-in-form").submit(function (event) {
         event.preventDefault();
-        ajaxRequest();
+        ajaxRequest(event.currentTarget);
     });
 
     $(".reverse-form").submit(function (event) {
         event.preventDefault();
-        ajaxRequest();
+        ajaxRequest(event.currentTarget);
     });
 
 });
