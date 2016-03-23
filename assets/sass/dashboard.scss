@@ -61,40 +61,37 @@ ul.main-nav.nav {
 				background-color: transparent !important;
 			}
 		}
+		a.active:after {
+			top: 97%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+			border-top-color: #344553;
+			border-width: 16px;
+			margin-left: -20px;
+		}
+		a.description-section.active:after {
+			left: 53%;
+		}
+		a.team-section.active:after {
+			left: 55%;
+		}
+		a.sponsors-section.active:after {
+			left: 54%;
+		}
+		a.github-section.active:after {
+			left: 55%;
+		}
+		a.trello-section.active:after {
+			left: 55%;
+		}
 
 		
 	}
-	
-	&:after{
-		top: 100%;
-		border: solid transparent;
-		content: " ";
-		height: 0;
-		width: 0;
-		position: absolute;
-		pointer-events: none;
-		border-top-color: #344553;
-		border-width: 16px;
-		margin-left: -20px;
-		@include transition(left 0.7s ease);
-	}
 }
-.first:after {
-	left: 19%;
-}
-.second:after {
-	left: 36.1%;
-}
-.third:after {
-    left: 52%;
-}
-.fourth:after {
-	left: 68.4%;
-}
-.fifth:after {
-	left: 83.6%;
-}
-
 .dashboard-container {
 	padding: 0 4% 2% 4%;
 	.title, .brief{

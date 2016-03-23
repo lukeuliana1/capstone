@@ -2,22 +2,13 @@ $ = jquery = Jquery = require("jquery");
 require("slimScroll");
 var fullpage = require("fullpage.js");
 
-jQuery.fn.removeClassExcept = function (val) {
-    return this.each(function (index, el) {
-        var keep = val.split(" "),  // list we'd like to keep
-        reAdd = [],          // ones that should be re-added if found
-        $el = $(el);       // element we're working on
-        // look for which we re-add (based on them already existing)
-        for (var c = 0; c < keep.length; c++){
-          if ($el.hasClass(keep[c])) reAdd.push(keep[c]);
-        }
-
-        // drop all, and only add those confirmed as existing
-        $el
-          .removeClass()               // remove existing classes
-          .addClass(reAdd.join(' '));  // re-add the confirmed ones
-    });
-};
+var removeActiveFromSections = function() {
+    sectionsArray = [$(".description-section"), $(".team-section"), $(".sponsors-section"), $(".github-section"), $(".trello-section")];
+    for(i=0; i < sectionsArray.length;i++){
+        sectionsArray[i].removeClass("active");
+    }
+    return 0;
+}
 
 $(document).ready(function() {
     $('.slider').fullpage({
@@ -29,6 +20,7 @@ $(document).ready(function() {
     });
 
     var blocksArray = [$(".description-block"), $(".team-block"), $(".sponsors-block"), $(".github-block")];
+    
     for(i=0; i < blocksArray.length; i++){
         blocksArray[i].slimScroll({
             height: '89%'
@@ -37,23 +29,27 @@ $(document).ready(function() {
 
     $(".description-section").on("click", function() {
     	$.fn.fullpage.moveTo(0, 0);
-        $(".sub-nav").removeClassExcept("nav sub-nav");
-        $(".sub-nav").addClass("first"); 
+        removeActiveFromSections();
+        $(this).addClass("active");
     });
     $(".team-section").on("click", function() {
     	$.fn.fullpage.moveTo(0, 1);
-        $(".sub-nav").removeClassExcept("nav sub-nav");
-        $(".sub-nav").addClass("second"); 
+        removeActiveFromSections();
+        $(this).addClass("active");
     });
     $(".sponsors-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 2);
-        $(".sub-nav").removeClassExcept("nav sub-nav");
-        $(".sub-nav").addClass("third"); 
+        removeActiveFromSections();
+        $(this).addClass("active");
     });
     $(".github-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 3);
-        $(".sub-nav").removeClassExcept("nav sub-nav");
-        $(".sub-nav").addClass("fourth"); 
+        removeActiveFromSections();
+        $(this).addClass("active");
     });
-    
+    $(".trello-section").on("click", function() {
+        $.fn.fullpage.moveTo(0, 4);
+        removeActiveFromSections();
+        $(this).addClass("active");
+    });
 });
