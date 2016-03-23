@@ -6,10 +6,18 @@ require("bootstrap-select");
 csrftoken = csrfToken.getCookie('csrftoken');
 register = false || 'default';
 
+parseLink = function() {
+    var currentLink = document.location.href;
+    if(currentLink.indexOf("=") > -1){
+        return currentLink.split("=")[1];
+    }
+    return -1;
+}
+
 ajaxRequest = function() {
         var caller = $(event.currentTarget);
         $(".response").html("");
-        if(caller.hasClass("sign-in-form")) {
+        if(caller.hasClass("sign-in-form")) { //Front form, user is signing in
             var ajaxProc = {
                 urlPost : "/account/login/",
                 redirect : "/account/profile/",
@@ -17,8 +25,12 @@ ajaxRequest = function() {
                 response : $("#front-response"),
                 successMessage : "You are logged in"
             };
+            var nextLink = parseLink();
+            if(nextLink != -1){
+                ajaxProc.redirect = nextLink;
+            }
         }
-        else if(caller.hasClass("reverse-form") && register) {
+        else if(caller.hasClass("reverse-form") && register) { //Back form, user is registering
             var ajaxProc = {
                 urlPost : "/account/register/",
                 redirect : "/account/profile/",
@@ -28,7 +40,7 @@ ajaxRequest = function() {
             };
 
         }
-        else if(caller.hasClass("reverse-form") && !register) {
+        else if(caller.hasClass("reverse-form") && !register) { //Back form, user forgot password
             var ajaxProc = {
                 urlPost : "/account/forgot-password/",
                 redirect : "/account/profile/",
@@ -40,8 +52,9 @@ ajaxRequest = function() {
         }
         else {
             console.error("Wrong request");
-            return;
+            return -1;
         }
+        //Ajax requrest using ajaxProc
         $.ajax({
             url: ajaxProc.urlPost,
             type: 'POST',
@@ -59,6 +72,7 @@ ajaxRequest = function() {
                 ajaxProc.response.css("color", "#3fa565");
                 ajaxProc.response.append(ajaxProc.successMessage);
                 $(".submit-button").val("Success");
+
                 setTimeout(function(){
                         window.location.href = ajaxProc.redirect;
                     }, 1000);
