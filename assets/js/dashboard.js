@@ -1,5 +1,5 @@
 $ = jquery = Jquery = require("jquery");
-require("slimScroll");
+require("jQuery-slimScroll");
 var fullpage = require("fullpage.js");
 
 var removeActiveFromSections = function() {

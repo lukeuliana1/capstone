@@ -1,7 +1,6 @@
 from os import path
 from django.db import models
 from django.utils.text import slugify
-from account.models import Student, Employee
 from taggit.managers import TaggableManager
 # Create your models here.
 
@@ -13,10 +12,7 @@ class Project(models.Model):
     projects = models.Manager()
     title = models.CharField(max_length=200)
     slug = models.SlugField(
-            max_length=200, unique=True, blank=False, editable=True)
-    students = models.ForeignKey(Student)
-    employees = models.ForeignKey(Employee)
-    
+            max_length=200, unique=True, blank=False, editable=True)    
     brief_description = models.CharField(max_length=300)
     description = models.TextField()
     github = models.URLField(blank=True)
