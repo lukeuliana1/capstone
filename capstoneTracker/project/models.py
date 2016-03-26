@@ -9,7 +9,7 @@ def image_upload_path(instance, filename):
 
 
 class Project(models.Model):
-    projects = models.Manager()
+    manager = models.Manager()
     title = models.CharField(max_length=200)
     slug = models.SlugField(
             max_length=200, unique=True, blank=False, editable=True)    
