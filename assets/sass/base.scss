@@ -10,10 +10,15 @@
 
 html, body {
   height: 100%;
+  box-sizing: border-box;
 }
 
-* {
-	@include font-smoothing(antialiased);
+html {
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  @include font-smoothing(antialiased);
 }
 
 .button-action {

@@ -2,18 +2,12 @@
 	h1.title Sponsors
 	p.brief Capstone Tracker Project Team
 	.sponsors-container.participants
+		{% for employee in employees %}
 		.user
-			i.fa.fa-user
-			a(href="#") John Doe
-			a(href="#") example@email.com
-		.user
-			i.fa.fa-user
-			a(href="#") John Doe
-			a(href="#") example@email.com
-		.user
-			i.fa.fa-user
-			a(href="#") John Doe
-			a(href="#") example@email.com
+			{% avatar employee %}
+			a(href="#").name {{employee.first_name}} {{employee.last_name}}
+			a(href="#").email {{employee.email}}
+		{% endfor %}
 
 
 		

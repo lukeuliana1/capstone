@@ -2,29 +2,11 @@
 	h1.title The Pennsylvania State University
 	p.brief Capstone Tracker Project Team
 	.team-container.participants
+		{% for student in students %}
 		.user
-			i.fa.fa-user
-			a(href="#") John Doe
-			a(href="#") example@email.com
-		.user
-			i.fa.fa-user
-			a(href="#") John Doe
-			a(href="#") example@email.com
-		.user
-			i.fa.fa-user
-			a(href="#") John Doe
-			a(href="#") example@email.com
-		.user
-			i.fa.fa-user
-			a(href="#") John Doe
-			a(href="#") example@email.com
-		.user
-			i.fa.fa-user
-			a(href="#") John Doe
-			a(href="#") example@email.com
-		.user
-			i.fa.fa-user
-			a(href="#") John Doe
-			a(href="#") example@email.com
+			{% avatar student %}
+			a(href="#") {{student.first_name}} {{student.last_name}}
+			a(href="#") {{student.email}}
+		{% endfor %}
 
 

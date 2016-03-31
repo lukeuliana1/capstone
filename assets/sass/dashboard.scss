@@ -24,10 +24,15 @@ ul.main-nav.nav {
 			a {
 				text-decoration: none;
 				background-color: transparent;
+				img {
+					width: 45px;
+					height: 45px;
+				}
 			}
-			img {
-				width: 45px;
-				height: 45px;
+			a.active {
+				img {
+					background-color: transparent;
+				}
 			}
 		}
 		li.user {
@@ -120,6 +125,8 @@ ul.main-nav.nav {
 		@include flex-wrap(wrap);
 		.user {
 			margin: 0 auto;
+			font-weight: 800;
+    		font-size: 115%;
 			i {
 				font-size: 3.3em;
 				color: #808080;

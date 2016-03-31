@@ -2,15 +2,9 @@ $ = jquery = Jquery = require("jquery");
 require("jQuery-slimScroll");
 var fullpage = require("fullpage.js");
 
-var removeActiveFromSections = function() {
-    sectionsArray = [$(".description-section"), $(".team-section"), $(".sponsors-section"), $(".github-section"), $(".trello-section")];
-    for(i=0; i < sectionsArray.length;i++){
-        sectionsArray[i].removeClass("active");
-    }
-    return 0;
-}
-
 $(document).ready(function() {
+    activeBlock = $(".description-section");
+    blocksArray = [$(".description-block"), $(".team-block"), $(".sponsors-block"), $(".github-block"), $(".trello-block")];
     $('.slider').fullpage({
     	controlArrows: false,
     	loopHorizontal: false,
@@ -18,8 +12,6 @@ $(document).ready(function() {
         verticalCentered: false
 
     });
-
-    var blocksArray = [$(".description-block"), $(".team-block"), $(".sponsors-block"), $(".github-block")];
     
     for(i=0; i < blocksArray.length; i++){
         blocksArray[i].slimScroll({
@@ -29,27 +21,32 @@ $(document).ready(function() {
 
     $(".description-section").on("click", function() {
     	$.fn.fullpage.moveTo(0, 0);
-        removeActiveFromSections();
+        activeBlock.removeClass("active");
         $(this).addClass("active");
+        activeBlock = $(this);
     });
     $(".team-section").on("click", function() {
     	$.fn.fullpage.moveTo(0, 1);
-        removeActiveFromSections();
+        activeBlock.removeClass("active");
         $(this).addClass("active");
+        activeBlock = $(this);
     });
     $(".sponsors-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 2);
-        removeActiveFromSections();
+        activeBlock.removeClass("active");
         $(this).addClass("active");
+        activeBlock = $(this);
     });
     $(".github-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 3);
-        removeActiveFromSections();
+        activeBlock.removeClass("active");
         $(this).addClass("active");
+        activeBlock = $(this);
     });
     $(".trello-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 4);
-        removeActiveFromSections();
+        activeBlock.removeClass("active");
         $(this).addClass("active");
+        activeBlock = $(this);
     });
 });
