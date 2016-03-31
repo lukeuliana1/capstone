@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser, User
 from project.models import Project
-from simple_email_confirmation import SimpleEmailConfirmationUserMixin
+from simple_email_confirmation.models import SimpleEmailConfirmationUserMixin
 from django.db import models
 
 
@@ -33,7 +33,7 @@ class Student(UserProfile):
         ('SP', 'Spring'),
         ('SU', 'Summer')
     )
-    project = models.ForeignKey(Project)
+    project = models.ForeignKey(Project, blank=True, null=True)
     grad_semester = models.CharField(max_length=2, choices=SEMESTER_OPTIONS, null=True, blank=True)
     grad_year = models.PositiveIntegerField(null=True, blank=True)
     major = models.CharField(max_length=255, null=True, blank=True)
@@ -46,7 +46,7 @@ class Student(UserProfile):
 class Employee(UserProfile):
 
     """Employee - Information about a Employee."""
-    project = models.ForeignKey(Project)
+    project = models.ForeignKey(Project, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, blank=True)
 
