@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     "account",
     "project",
     "simple_email_confirmation",
+    'avatar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,6 +86,9 @@ SERVER_EMAIL = 'psucapstonetracker@gmail.com'
 EMAIL_HOST_USER = 'psucapstonetracker@gmail.com'
 EMAIL_HOST_PASSWORD = 'alverbanec'
 EMAIL_PORT = 587
+
+AVATAR_GRAVATAR_BACKUP = False
+AVATAR_DEFAULT_URL = "/images/default-avatar.svg"
 
 WSGI_APPLICATION = 'capstoneTracker.wsgi.application'
 
