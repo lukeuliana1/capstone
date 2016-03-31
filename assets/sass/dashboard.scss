@@ -144,6 +144,27 @@ ul.main-nav.nav {
 
 	}
 	.github-container{
-
+		float: left;
+		margin-left: 300px;
+		canvas#myChart {
+			margin: 0 auto;
+			width: 400px;
+			height: 400px;
+		}
 	}
+	
+	.legend li span {
+	    width: 2em;
+	    height: 2em;
+	    display: inline-block;
+	    margin-right: 5px;
+	}
+	.legend {
+		float: right;
+		margin-right: 250px;
+		margin-top: 100px;
+		font-size: 20px;
+	    list-style: none;    
+	}	
+	
 }
