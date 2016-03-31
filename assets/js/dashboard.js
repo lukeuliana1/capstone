@@ -116,7 +116,7 @@ $(document).ready(function() {
        //var legend = myLineChart.generateLegend();
        // $("#legend").html(legend);
     });
-});
+
 
 
 
