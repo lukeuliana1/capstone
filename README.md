@@ -33,9 +33,11 @@
    <p>`$ pip install -r requirements.txt`
 8. Navigate into capstoneTracker directory:
    <p>`$ cd capstoneTracker`
-9. Migrate database (update database):
+9. Makemigrations for database:
+   <p>`$ ./manage.py makemigrations`
+10. Migrate database (update database):
    <p>`$ ./manage.py migrate`
-10. Launch the server:
+11. Launch the server:
    <p>`$ ./manage.py runserver`
 
 
@@ -67,7 +69,7 @@
 	  <p>`$ ./capstoneTracker/manage.py migrate`
 
 7. Create Groups/Permissions: (for windows do not include ./)
-    <p>`$ ./capstoneTracker/manage.py shell < ./capstoneTracker/create_groups.py`
+    <p>`$ ./capstoneTracker/manage.py shell < ./capstoneTracker/capstoneTracker/create_groups.py`
     <p>`$ ./capstoneTracker/manage.py makemigrations`
     <p>`$ ./capstoneTracker/manage.py migrate`
 8. Install npm packages
