@@ -1,0 +1,1 @@
+default_app_config = 'simple_email_confirmation.apps.SimpleEmailConfirmation'

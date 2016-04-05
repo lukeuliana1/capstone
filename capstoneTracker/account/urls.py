@@ -1,8 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.views.generic.base import RedirectView
 from . import views
 
-urlpatterns = patterns('',
+urlpatterns = [
    url(r'^$', RedirectView.as_view(url='profile', permanent=False), name='index'),			
    url(r'^login/$', views.login),
    url(r'^logout/$', views.logout),
@@ -14,4 +14,4 @@ urlpatterns = patterns('',
       views.password_reset_confirm, name='password_reset_confirm'),
    url(r'^profile/$', views.profile, name='profile'),
    url(r'^profile/.*$', views.profile) #Not implemented yet (see other profiles)
-   )
+   ]

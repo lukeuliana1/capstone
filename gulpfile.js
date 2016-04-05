@@ -15,6 +15,7 @@ var
     bower = require('gulp-bower'),
     sourcemaps = require('gulp-sourcemaps'),
     livereload = require('gulp-livereload'),
+    del = require('del'),
     exec = require('child_process').exec;
 
 var config = {
@@ -127,6 +128,15 @@ gulp.task('collectstatic', function() {
       process.stdout.write(data);
     });
 });
+
+gulp.task('clean', function () {
+  return del([
+    config.static,
+    config.templates,
+    './capstoneTracker/static'
+  ]);
+});
+
 
 //Activate virtualenv and run Django server
 /*
