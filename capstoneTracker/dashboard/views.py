@@ -15,5 +15,5 @@ def description_page(request):
                                                            "employees":project_entry.employee_set.all()},
                               RequestContext(request))
 def profile(request):
-    return render_to_response('dashboard/dashboard.html', {"profile":True},
+    return render_to_response('dashboard/dashboard.html', {"global":True},
                               RequestContext(request))

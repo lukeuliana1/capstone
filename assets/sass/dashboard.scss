@@ -142,7 +142,7 @@ ul.main-nav.nav {
 			font-size: 17px;
 		}
 	}
-	.participants {
+	/*.participants {
 		@include flexbox;
 		@include flex-direction(row);
 		@include justify-content(flex-start);
@@ -163,6 +163,151 @@ ul.main-nav.nav {
 			@include align-items(center);
 			width: 300px;
 			height: 200px;
+		}*/
+	.participants {
+		@include flexbox;
+		@include flex-direction(row);
+		@include justify-content(flex-start);
+		@include align-items(center);
+		@include flex-wrap(wrap);
+		.user {
+			margin: 0 auto;
+			font-weight: 800;
+			font-size: 115%;
+			i {
+				font-size: 3.3em;
+				color: #808080;
+			}
+			padding: 4% 0;
+			@include flexbox;
+			@include flex-direction(column);
+			@include justify-content(space-between);
+			@include align-items(center);
+			width: 300px;
+			height: 200px;
+		}
+		.school {
+			margin: 0 auto;
+			a {
+				text-decoration: none;
+				color: #FFF;
+			}
+			i{
+				.school_logo {
+					background-color: #018BB0;
+					padding: 10px 10px 10px 10px;
+					height: 300px;
+					width: 300px;
+				}
+				.school_name {
+					background-color: #018BB0;
+					padding: 4% 4%;
+					text-align: center;
+					height: 100px;
+					font-weight: bold;
+					width: 300px;
+					font-size: 25px;
+				}
+			}
+			padding: 25px 0;
+			@include flexbox;
+			@include flex-direction(column);
+			@include justify-content(space-between);
+			@include align-items(center);
+			@include flex-wrap(wrap)
+			width: 300px;
+			height: 450px;
+
+		}
+		.project {
+			margin: 0 auto;
+			a {
+				text-decoration: none;
+				color: #FFF;
+			}
+			i{
+				.overlay.current {
+					padding: 10px 10px;
+					width: 600px;
+					height: 220px;
+					margin-right: 15px;
+					background-color: #018BB0;
+					.title	{
+						padding-right: 20px;
+						font-size: 23px;
+						font-weight: bold;
+						color: #FFF;
+					}
+					.brief {
+						height: 42px;
+						padding-right: 20px;
+						font-size: 18px;
+						color: #FFF;
+					}
+					.subtext{
+						width: 600px;
+						height: 75px;
+						.school_logo_project {
+							margin-left: 20px;
+							height: 75px;
+							width: 75px;
+							float: left;
+						}
+						.timestmp {
+							vertical-align: center;
+							padding-left: 115px;
+							padding-top: 27px;
+							font-size: 18px;
+							color: #FFF;
+						}
+					}
+				}
+				.overlay.old {
+					padding: 10px 10px;
+					width: 600px;
+					height: 220px;
+					margin-right: 15px;
+					background-color: #4A4A4A;
+					.title	{
+						padding-right: 20px;
+						font-size: 23px;
+						font-weight: bold;
+						color: #FFF;
+					}
+					.brief {
+						height: 42px;
+						padding-right: 20px;
+						font-size: 18px;
+						color: #FFF;
+					}
+					.subtext{
+						width: 600px;
+						height: 75px;
+						.school_logo_project {
+							margin-left: 20px;
+							height: 75px;
+							width: 75px;
+							float: left;
+						}
+						.timestmp {
+							vertical-align: center;
+							padding-left: 115px;
+							padding-top: 27px;
+							font-size: 18px;
+							color: #FFF;
+						}
+					}
+				}
+			}
+		padding: 25px 0;
+		@include flexbox;
+		@include flex-direction(column);
+		@include justify-content(space-between);
+		//@include align-items(center);
+		@include flex-wrap(wrap)
+		width: 600px;
+		height: 270px;
+
 		}
 	}
 	.sponsor-container{
@@ -218,6 +363,13 @@ ul.main-nav.nav {
 	.trello-container {
 		height: 77%;
 	}
+	.current_projects-container {
+
+	}
+	.school-container {
+
+	}
+	
 	.profile-container {
 
 		@include flexbox;

@@ -6,8 +6,12 @@ fullpage = require("fullpage.js");
 
 
 $(document).ready(function() {
-    var activeBlock = $(".description-section");
-    var blocksArray = [$(".description-block"), $(".team-block"), $(".sponsors-block"), $(".github-block"), $(".trello-block"), $(".profile-block")];
+    //var activeBlock = $(".description-section");
+    //var blocksArray = [$(".description-block"), $(".team-block"), $(".sponsors-block"), $(".github-block"), $(".trello-block"), $(".profile-block")];
+    var activeBlock_project = $(".description-section");
+    var activeBlock_global = $(".current_projects-section");
+    var blocksArray_project = [$(".description-block"), $(".team-block"), $(".sponsors-block"), $(".github-block"), $(".trello-block"), $(".profile-block")];
+    var blocksArray_global = [$(".current_projects-block"), $(".school-block"), $(".slack-block")];
 
     $('.slider').fullpage({
         controlArrows: false,
@@ -25,47 +29,70 @@ $(document).ready(function() {
     });
     $(".dashboard-container").scrollTop()
 
-    for (i = 0; i < blocksArray.length; i++) {
-        blocksArray[i].slimScroll({
+    for(i=0; i < blocksArray_project.length; i++){
+        blocksArray_project[i].slimScroll({
+            height: '92%'
+        });
+    }
+    for(i=0; i < blocksArray_global.length; i++){
+        blocksArray_global[i].slimScroll({
             height: '92%'
         });
     }
 
     $(".description-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 0);
-        activeBlock.removeClass("active");
+        activeBlock_project.removeClass("active");
         $(this).addClass("active");
-        activeBlock = $(this);
+        activeBlock_project = $(this);
     });
     $(".team-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 1);
-        activeBlock.removeClass("active");
+        activeBlock_project.removeClass("active");
         $(this).addClass("active");
-        activeBlock = $(this);
+        activeBlock_project = $(this);
     });
     $(".sponsors-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 2);
-        activeBlock.removeClass("active");
+        activeBlock_project.removeClass("active");
         $(this).addClass("active");
-        activeBlock = $(this);
+        activeBlock_project = $(this);
     });
     $(".github-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 3);
-        activeBlock.removeClass("active");
+        activeBlock_project.removeClass("active");
         $(this).addClass("active");
-        activeBlock = $(this);
+        activeBlock_project = $(this);
     });
     $(".trello-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 4);
-        activeBlock.removeClass("active");
+        activeBlock_project.removeClass("active");
         $(this).addClass("active");
-        activeBlock = $(this);
+        activeBlock_project = $(this);
     });
     $(".profile-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 5);
-        activeBlock.removeClass("active");
+        activeBlock_project.removeClass("active");
         $(this).addClass("active");
-        activeBlock = $(this);
+        activeBlock_project = $(this);
+    });
+    $(".current_projects-section").on("click", function() {
+        $.fn.fullpage.moveTo(0, 0);
+        activeBlock_global.removeClass("active");
+        $(this).addClass("active");
+        activeBlock_global = $(this);
+    });
+    $(".school-section").on("click", function() {
+        $.fn.fullpage.moveTo(0, 1);
+        activeBlock_global.removeClass("active");
+        $(this).addClass("active");
+        activeBlock_global = $(this);
+    });
+    $(".slack-section").on("click", function() {
+        $.fn.fullpage.moveTo(0, 2);
+        activeBlock_global.removeClass("active");
+        $(this).addClass("active");
+        activeBlock_global = $(this);
     });
 });
 

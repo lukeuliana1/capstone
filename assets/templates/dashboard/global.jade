@@ -1,7 +1,15 @@
 ul.sub-nav.nav
 	li 
-		a(href="#") Project
+		a(href="#").current_projects-section.active Projects
 	li 
-		a(href="#") Schools
+		a(href="#").school-section Schools
 	li 
-		a(href="#") Slack
+		a(href="#").slack-section Slack
+.row.slider
+	.section
+		.slide.col-lg-10
+			include current_projects
+		.slide.col-lg-10
+			include schools
+		.slide.col-lg-10
+			include slack
