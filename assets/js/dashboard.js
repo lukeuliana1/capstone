@@ -79,8 +79,7 @@ $(document).ready(function() {
         // Get context with jQuery - using jQuery's .get() method.
         ctx = $("#myChart").get(0).getContext("2d");
         // This will get the first returned node in the jQuery collection.
-        myPieChart = new Chart(ctx).Pie(data, {legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%>: <%%><%=segments[i].value%><%}%></li><%}%></ul>"
-        });
+        myPieChart = new Chart(ctx).Pie(data, {legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%>: <%%><%=segments[i].value%><%}%></li><%}%></ul>"});
 
         var legend = myPieChart.generateLegend();
         $("#legend").html(legend);
@@ -92,38 +91,49 @@ $(document).ready(function() {
     }).done(function(response){
         githubdata = response;
         var data1 = [];
-        var i;
-        console.log(githubdata);
-        data1.push({ labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-            "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
-            "31", "32", "33", "34", "35", "36", "37", "38", "39", "40",
-            "41", "42", "43", "44", "45", "46", "47", "48", "49", "50",
-            "51", "52"]});
+        var months = [];
+        var i = 0;
         var info = [];
-        var count = 0;
-        for (i=0; i<githubdata.length; i++){
-           for (j=0; j<githubdata[i].length; j++){
-                count += githubdata[i];
+        var cnt = 0;
+        var tempDate = new Date(githubdata[0].week);
+        var currMonth = tempDate.getMonth();
+        var curYear = tempDate.getYear();
+        while (i<githubdata.length){           
+            var thisDate = new Date(githubdata[i].week*1000);
+            if (thisDate.getMonth() == currMonth && thisDate.getYear() == curYear){
+                cnt += githubdata[i].total;
             }
-            info.push(count);
+            else{
+                if (curYear!= 70){
+                    var m = findMonth(currMonth);
+                    months.push(m);
+                    info.push(cnt);
+                }                
+                cnt = 0;
+                currMonth = thisDate.getMonth();
+                curYear = thisDate.getYear();
+            }
+            i++;                
         }
-        data1.push({
-            data: info,
-            strokeColor: getRandomColor(0),
-            label: "Commit activity"
-        });
+        data1 = { 
+            labels: months,
+            datasets: [
+            {
+                data: info,
+                fillColor: getRandomColor(0),
+                strokeColor: getRandomColor(1),
+                pointColor: getRandomColor(2),
+                pointStrokeColor: getRandomColor(3),
+                pointHighlightFill: getRandomColor(4),
+                pointHighlightStroke: getRandomColor(5),
+                label: "Commit activity"
+            }]};
 
         // Get context with jQuery - using jQuery's .get() method.
-        ctx = $("#myChart").get(0).getContext("2d");
+        ctx = $("#myLineChart").get(0).getContext("2d");
         // This will get the first returned node in the jQuery collection.
-        //myLineChart = new Chart(ctx).Line(data1);
-
-       //var legend = myLineChart.generateLegend();
-       // $("#legend").html(legend);
+        myLineChart = new Chart(ctx).Line(data1, {showXLabels: 12});
     });
-
-
 
 
 color_array = ['#018BBB', '#00374A', '#4DADCF', '#006182', '#B2DCEA', '#344653', '#B3B9BE', '#67747E', '#000000', '#E5F3F8'];
@@ -137,4 +147,45 @@ function getRandomColor(j) {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+}
+
+function findMonth(x){
+        var j;
+        var curMonth = x;
+        if (curMonth == 0){
+             return ("January");
+        }
+        if (curMonth == 1){
+             return ("February");
+        }
+        if (curMonth == 2){
+             return ("March");
+        }
+        if (curMonth == 3){
+             return ("April");
+        }
+        if (curMonth == 4){
+             return ("May");
+        }
+        if (curMonth == 5){
+             return ("June");
+        }
+        if (curMonth == 6){
+             return ("July");
+        }
+        if (curMonth == 7){
+             return ("August");
+        }
+        if (curMonth == 8){
+             return ("September");
+        }
+        if (curMonth == 9){
+             return ("October");
+        }
+        if (curMonth == 10){
+             return ("November");
+        }
+        if (curMonth == 11){
+             return ("December");
+        }           
 }
