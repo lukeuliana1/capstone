@@ -122,10 +122,10 @@ $(document).ready(function() {
                 data: info,
                 fillColor: getRandomColor(0),
                 strokeColor: getRandomColor(1),
-                pointColor: getRandomColor(2),
-                pointStrokeColor: getRandomColor(3),
-                pointHighlightFill: getRandomColor(4),
-                pointHighlightStroke: getRandomColor(5),
+                pointColor: getRandomColor(1),
+                pointStrokeColor: getRandomColor(1),
+                pointHighlightFill: getRandomColor(0),
+                pointHighlightStroke: getRandomColor(0),
                 label: "Commit activity"
             }]};
 
