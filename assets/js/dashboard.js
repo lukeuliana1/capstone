@@ -7,7 +7,7 @@ var fullpage = require("fullpage.js");
 
 $(document).ready(function() {
     activeBlock = $(".description-section");
-    blocksArray = [$(".description-block"), $(".team-block"), $(".sponsors-block"), $(".github-block"), $(".trello-block")];
+    blocksArray = [$(".description-block"), $(".team-block"), $(".sponsors-block"), $(".github-block"), $(".trello-block"), $(".profile-block")];
     $('.slider').fullpage({
         controlArrows: false,
         loopHorizontal: false,
@@ -48,6 +48,12 @@ $(document).ready(function() {
     });
     $(".trello-section").on("click", function() {
         $.fn.fullpage.moveTo(0, 4);
+        activeBlock.removeClass("active");
+        $(this).addClass("active");
+        activeBlock = $(this);
+    });
+    $(".profile-section").on("click", function() {
+        $.fn.fullpage.moveTo(0, 5);
         activeBlock.removeClass("active");
         $(this).addClass("active");
         activeBlock = $(this);
