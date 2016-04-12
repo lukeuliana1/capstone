@@ -3,10 +3,18 @@
 	p.brief Capstone Tracker Project Team
 	.github-container
 		h2.chart-title Commits per User
-		canvas#myChart
-	.legend#legend
-	.github-container-line
+		.failResponseGithub.first.hidden
+		.uil-ring-css.first.loading
+			div
+		.chartBox.first.hidden
+			canvas.chart#teamCommitsChart
+			.legend#legend
+	.github-container
 		h2.chart-title Commit Activity (per month for past year)
-		canvas#myLineChart
+		.failResponseGithub.second.hidden
+		.uil-ring-css.second.loading
+			div
+		.chartBox.second.hidden
+			canvas.chart#totalCommitsChart
 	
 	

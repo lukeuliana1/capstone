@@ -14,10 +14,10 @@ html(lang="en")
 					a(href="#")
 						img(src="{% static 'images/elements/menu-icons/globe.svg' %}").globe-icon
 				li
-					a(href="#").active
+					a(href="/dashboard/").active
 						img(src="{% static 'images/elements/menu-icons/folder.svg' %}").folder-icon
 				li.user
-					a(href="#")
+					a(href="/dashboard/profile")
 						img(src="{% static 'images/elements/menu-icons/profile.svg' %}").profile-icon
 						p.username {{request.user.first_name}} {{request.user.last_name}}
 		{% if project %}

@@ -16,6 +16,7 @@ class Project(models.Model):
     brief_description = models.CharField(max_length=300)
     description = models.TextField()
     github = models.URLField(blank=True)
+    trello = models.URLField(blank=True)
     image = models.ImageField(upload_to=image_upload_path, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     tags = TaggableManager()

@@ -1,5 +1,6 @@
 @import "base";
 @import "jquery.fullPage.scss";
+@import "loading-icon";
 * {
 	font-family: 'Gotham';
 }
@@ -65,6 +66,9 @@ ul.main-nav.nav {
 				background-color: transparent !important;
 			}
 		}
+		a:after {
+			@include transition(border-top-color 0.2s);
+		}
 		a.active:after {
 			top: 97%;
 			border: solid transparent;
@@ -76,6 +80,9 @@ ul.main-nav.nav {
 			border-top-color: #344553;
 			border-width: 16px;
 			margin-left: -20px;
+		}
+		a.active.scrolled:after {
+			border-top-color: transparent;
 		}
 		a.description-section.active:after {
 			left: 53%;
@@ -105,7 +112,7 @@ ul.main-nav.nav {
 }
 
 .dashboard-container {
-	padding: 0 4% 2% 4%;
+	padding: 0 4% 8% 4%;
 	.title, .brief{
 		padding-left: 20px;
 		color: #344553;
@@ -163,36 +170,53 @@ ul.main-nav.nav {
 	}
 	.github-container{
 		float: left;
-		margin-left: 350px;
-		canvas#myChart {
-			margin: 0 auto;
-			width: 400px;
-			height: 400px;
+		width: 100%;
+		@include flexbox;
+		@include flex-direction(column);
+		@include justify-content(center);
+		@include align-items(center);
+		.uil-ring-css {
+			transform: scale(0.8); //Inherits from loading-icon
+		}
+		.failResponse {
+			margin: 2% 0;
+			color: #ff0033;
+			text-align: center;
+			font-size: 150%;
+		}
+		.chartBox {
+			width: 100%;
+			position: relative;
+			@include flexbox;
+			@include flex-direction(row);
+			@include justify-content(center);
+			@include align-items(center);
+			.legend {
+				position: absolute;
+				font-size: 15px;
+				ul {
+					list-style-type: none;
+				}
+				li span {
+				    width: 2em;
+				    height: 2em;
+				    display: inline-block;
+				    margin-right: 5px;
+				}
+			}
+			canvas#teamCommitsChart {
+				width: 400px;
+				height: 400px;
+			}
+			canvas#totalCommitsChart {		
+				width: 800px;
+				height: 500px;
+			}
+
 		}
 	}
-	.github-container-line{
-		float: left;
-		margin-left: 180px;
-		margin-top: 20px;
-		canvas#myLineChart {			
-			margin: 0 auto;
-			width: 800px;
-			height: 500px;
-		}
-	}
-	
-	.legend li span {
-	    width: 2em;
-	    height: 2em;
-	    display: inline-block;
-	    margin-right: 5px;
-	}
-	.legend {
-		float: right;
-		margin-right: 175px;
-		margin-top: 50px;
-		font-size: 15px;
-	    list-style: none;    
+	.trello-container {
+		height: 77%;
 	}
 	.profile-container {
 
@@ -281,3 +305,4 @@ ul.main-nav.nav {
 	}
 	
 }
+
