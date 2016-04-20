@@ -1,0 +1,110 @@
+@import "base";
+@import "dashboard";
+
+.profile-container {
+    @include flexbox;
+
+    @include flex-direction(row);
+
+    @include justify-content(flex-start);
+
+    @include align-items(center);
+
+    .avatar {
+        img {
+            @include flexbox;
+
+            @include flex-direction(column);
+
+            @include justify-content(space-between);
+
+            @include align-items(left);
+
+            margin: 0 auto;
+            padding: 10% 0;
+            width: 220px;
+            height: 220px;
+        }
+    }
+
+    .profile-card {
+        width: 100%;
+        margin: 25px;
+
+        @include box-shadow(2px, -1px, 8px, 0px, rgba(0, 0, 0, 0.75));
+
+        //padding: 25px;
+        border-radius: 5px;
+        position: relative;
+        background-color: #344553;
+
+        @include flexbox;
+
+        @include flex-direction(row);
+
+        //@include justify-content(flex-start);
+        @include align-items(left);
+
+        .user {
+            margin: 0 auto;
+            font-weight: 800;
+            font-size: 115%;
+            font-color: #FFF;
+            box-sizing: content-box;
+            padding: 25px;
+
+            h1.info {
+                color: #FFF;
+                margin-top: 0;
+            }
+
+            p.info {
+                color: #FFF;
+                font-size: 17px;
+            }
+
+            i {
+                font-size: 3.3em;
+                color: #FFF;
+            }
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .links {
+            padding: 2%;
+
+            i {
+                color: #FFF;
+                font-size: 250%;
+            }
+        }
+    }
+}
+
+.profile-additional-container {
+    @include flexbox;
+
+    @include flex-direction(column);
+
+    @include justify-content(space-between);
+
+    @include align-items(center);
+
+    @include box-shadow(2px, -1px, 8px, 0px, rgba(0, 0, 0, 0.75));
+
+    margin: 25px;
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+    background-color: #018bbb;
+
+    .info {
+        color: #FFF;
+    }
+
+    a.info {
+        font-size: 20px;
+    }
+}

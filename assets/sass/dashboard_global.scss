@@ -1,0 +1,98 @@
+@import "base";
+@import "dashboard";
+
+.sub-nav {
+    @include justify-content(center);
+
+    a.current_projects-section.active:after,
+    a.school-section.active:after {
+        margin-left: -55px;
+    }
+
+    a.slack-section.active:after {
+        margin-left: -42px;
+    }
+}
+
+.school {
+    padding: 25px 0;
+    height: 450px;
+    margin: 0 auto;
+
+    a {
+        background-color: #018BB0;
+        text-decoration: none;
+        display: table;
+        margin: 0 auto;
+    }
+
+    .school_logo {
+        padding: 10px 10px 10px 10px;
+        height: 300px;
+        width: 300px;
+    }
+
+    .school_name {
+        color: #FFF;
+        padding: 4% 4%;
+        text-align: center;
+        height: 100px;
+        font-weight: bold;
+        width: 300px;
+        font-size: 25px;
+    }
+}
+
+.project {
+    margin-top: 25px;
+    a {
+        text-decoration: none;
+        display: block;
+    }
+    .overlay {
+        padding: 10px 10px;
+        width: 600px;
+        height: 220px;
+
+        .title {
+            padding-right: 20px;
+            font-size: 23px;
+            font-weight: bold;
+            color: #FFF;
+        }
+
+        .brief {
+            height: 42px;
+            padding-right: 20px;
+            font-size: 18px;
+            color: #FFF;
+        }
+
+        .subtext {
+            height: 75px;
+            margin-top: 20px;
+            .school_logo_project {
+                margin-left: 20px;
+                height: 75px;
+                width: 75px;
+                float: left;
+            }
+
+            .timestmp {
+                vertical-align: center;
+                padding-left: 115px;
+                padding-top: 27px;
+                font-size: 18px;
+                color: #FFF;
+            }
+        }
+    }
+}
+
+.overlay.current {
+    background-color: #018BB0;
+}
+
+.overlay.old {
+    background-color: #4A4A4A;
+}

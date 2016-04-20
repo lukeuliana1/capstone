@@ -7,13 +7,16 @@ from project.models import Project
 
 #@csrf_exempt
 @login_required(login_url='/account/login/')
-def description_page(request):
+def project_page(request):
     project_entry = Project.manager.get(title="Capstone Tracker Project")
-    return render_to_response('dashboard/dashboard.html', {"project":True,
-                                                           "project_entry":project_entry,
+    return render_to_response('dashboard/project.html', {"project_entry":project_entry,
                                                            "students":project_entry.student_set.all(),
                                                            "employees":project_entry.employee_set.all()},
                               RequestContext(request))
-def profile(request):
-    return render_to_response('dashboard/dashboard.html', {"global":True},
-                              RequestContext(request))
+@login_required(login_url='/account/login/')
+def profile_page(request):
+    return render_to_response('dashboard/profile.html', RequestContext(request))
+
+@login_required(login_url='/account/login/')
+def global_page(request):
+    return render_to_response('dashboard/global.html', RequestContext(request))

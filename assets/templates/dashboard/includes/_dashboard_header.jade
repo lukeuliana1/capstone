@@ -1,0 +1,13 @@
+img(src="{% static 'images/logo.png' %}").logo
+ul.main-nav.nav
+	.menu.hidden-xs
+		li
+			a(href="/dashboard/global")
+				img(src="{% static 'images/elements/menu-icons/globe.svg' %}").globe-icon
+		li
+			a(href="/dashboard/").active
+				img(src="{% static 'images/elements/menu-icons/folder.svg' %}").folder-icon
+		li.user
+			a(href="/dashboard/profile")
+				img(src="{% static 'images/elements/menu-icons/profile.svg' %}").profile-icon
+				p.username {{request.user.first_name}} {{request.user.last_name}}

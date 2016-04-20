@@ -1,23 +1,33 @@
-ul.sub-nav.nav.profile
-	li 
-		a(href="#").profile-section Logout
-.dashboard-container.profile-block
-	.profile-container
-		.avatar
-			{% avatar student %}
-		.profile-card
-			.user
-				h1.info Lauren Winkler
-				p.info lnw5080@psu.edu
-				p.info The Pennsylvania State University
-				p.info Computer Science
-				p.info Graduation: May 2016
-			.links
-				i.fa.fa-pencil-square
-	.profile-additional-container
-		a.info Project
-	.profile-additional-container
-		a.info Linked In
-	.profile-additional-container
-		a.info Resume
+{% load staticfiles %}
+{% load avatar_tags %}
+doctype html
+html(lang="en")
+	head
+		title Capstone Tracker
+		link(rel="stylesheet" href="{% static 'css/dashboard_profile.css' %}")
+		script(type="text/javascript", src="{% static 'js/profile.bundle.js' %}")
+	body
+		include includes/_dashboard_header
+		ul.sub-nav.nav.profile
+			li 
+				a(href="#").profile-section Logout
+		.dashboard-container.profile-block
+			.profile-container
+				.avatar
+					{% avatar student %}
+				.profile-card
+					.user
+						h1.info Lauren Winkler
+						p.info lnw5080@psu.edu
+						p.info The Pennsylvania State University
+						p.info Computer Science
+						p.info Graduation: May 2016
+					.links
+						i.fa.fa-pencil-square
+			.profile-additional-container
+				a.info Project
+			.profile-additional-container
+				a.info Linked In
+			.profile-additional-container
+				a.info Resume
 	

@@ -1,460 +1,83 @@
 @import "base";
 @import "jquery.fullPage.scss";
 @import "loading-icon";
+@import "_dashboard_header";
 * {
-	font-family: 'Gotham';
+    font-family: 'Gotham';
 }
-.logo {
-	width: 160px;
-	position: absolute;
-	top: 15px;
-	left: 50px;
-}
-ul.main-nav.nav {
-	background-color: #FFF;
-	height: 100px;
-	padding: 0 8%;
-	.menu {
-		height: 100%;
-		@include flexbox;
-		@include flex-direction(row);
-		@include justify-content(flex-end);
-		@include align-items(center);
-		li {
-			margin-left: 5%;
-			a {
-				text-decoration: none;
-				background-color: transparent;
-				img {
-					width: 45px;
-					height: 45px;
-				}
-			}
-			a.active {
-				img {
-					background-color: transparent;
-				}
-			}
-		}
-		li.user {
-			display: inline-block;
-			p.username {
-				display: inline-block;
-				margin: 0 0 0 5px;
-				font-size: 140%;
-				color: #344553;
-				vertical-align: middle;
-			}
-		}
-	}
-	
-}
-.sub-nav {
-	background-color: #344553;
-	height: 45px;
-	padding: 0 13%;
-	position: relative;
-	@include flexbox;
-	@include flex-direction(row);
-	@include align-items(center);
-	li {
-		margin: 0 6%;
-		a {
-			color: #FFF;
-			font-size: 20px;
-			&:hover, &:focus {
-				background-color: transparent !important;
-			}
-		}
-		a:after {
-			@include transition(border-top-color 0.2s);
-		}
-		a.active:after {
-			top: 97%;
-			border: solid transparent;
-			content: " ";
-			height: 0;
-			width: 0;
-			position: absolute;
-			pointer-events: none;
-			border-top-color: #344553;
-			border-width: 16px;
-			margin-left: -20px;
-		}
-		a.active.scrolled:after {
-			border-top-color: transparent;
-		}
-		a.description-section.active:after {
-			left: 53%;
-		}
-		a.team-section.active:after {
-			left: 55%;
-		}
-		a.sponsors-section.active:after {
-			left: 54%;
-		}
-		a.github-section.active:after {
-			left: 55%;
-		}
-		a.trello-section.active:after {
-			left: 55%;
-		}
-	
-	}
-	&.first {
-		 @include justify-content(center);
-	}
-	&.profile {
-		@include justify-content(flex-end);
-		padding: 0;
-	}
 
+.sub-nav {
+    background-color: #344553;
+    height: 45px;
+    padding: 0 13%;
+    position: relative;
+    @include flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+    li {
+        margin: 0 6%;
+        a {
+            color: #FFF;
+            font-size: 20px;
+            &:hover,
+            &:focus {
+                background-color: transparent !important;
+            }
+        }
+        a:after {
+            @include transition(border-top-color 0.2s);
+        }
+        a.active:after {
+            top: 97%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-top-color: #344553;
+            border-width: 16px;
+            margin-left: -20px;
+        }
+        a.active.scrolled:after {
+            border-top-color: transparent;
+        }
+        a.description-section.active:after {
+            left: 53%;
+        }
+        a.team-section.active:after {
+            left: 55%;
+        }
+        a.sponsors-section.active:after {
+            left: 54%;
+        }
+        a.github-section.active:after {
+            left: 55%;
+        }
+        a.trello-section.active:after {
+            left: 55%;
+        }
+    }
+    &.first {
+        @include justify-content(center);
+    }
+    &.profile {
+        @include justify-content(flex-end);
+        padding: 0;
+    }
 }
 
 .dashboard-container {
-	padding: 0 4% 8% 4%;
-	.title, .brief{
-		padding-left: 20px;
-		color: #344553;
-	}
-	p.brief {
-		font-size: 20px;
-	}
-	.chart-title{
-		@include flexbox;
-		@include flex-direction(row);
-		@include justify-content(center);
-		@include align-items(center);
-		color: #344553;
-	}
-	h2.chart-title{
-		font-size: 25px;
-		font-weight: bold;
-	}
-	.description-container {
-		@include box-shadow(2px, -1px, 8px, 0px, rgba(0,0,0,0.75));
-		padding: 25px;
-		border-radius: 5px;
-		position: relative;
-		background-color: #344553;
-		p.description-text {
-			color: #FFF;
-			font-size: 17px;
-		}
-	}
-	/*.participants {
-		@include flexbox;
-		@include flex-direction(row);
-		@include justify-content(flex-start);
-		@include align-items(center);
-		@include flex-wrap(wrap);
-		.user {
-			margin: 0 auto;
-			font-weight: 800;
-    		font-size: 115%;
-			i {
-				font-size: 3.3em;
-				color: #808080;
-			}
-			padding: 4% 0;
-			@include flexbox;
-			@include flex-direction(column);
-			@include justify-content(space-between);
-			@include align-items(center);
-			width: 300px;
-			height: 200px;
-		}*/
-	.participants {
-		@include flexbox;
-		@include flex-direction(row);
-		@include justify-content(flex-start);
-		@include align-items(center);
-		@include flex-wrap(wrap);
-		.user {
-			margin: 0 auto;
-			font-weight: 800;
-			font-size: 115%;
-			i {
-				font-size: 3.3em;
-				color: #808080;
-			}
-			padding: 4% 0;
-			@include flexbox;
-			@include flex-direction(column);
-			@include justify-content(space-between);
-			@include align-items(center);
-			width: 300px;
-			height: 200px;
-		}
-		.school {
-			margin: 0 auto;
-			a {
-				text-decoration: none;
-				color: #FFF;
-			}
-			i{
-				.school_logo {
-					background-color: #018BB0;
-					padding: 10px 10px 10px 10px;
-					height: 300px;
-					width: 300px;
-				}
-				.school_name {
-					background-color: #018BB0;
-					padding: 4% 4%;
-					text-align: center;
-					height: 100px;
-					font-weight: bold;
-					width: 300px;
-					font-size: 25px;
-				}
-			}
-			padding: 25px 0;
-			@include flexbox;
-			@include flex-direction(column);
-			@include justify-content(space-between);
-			@include align-items(center);
-			@include flex-wrap(wrap)
-			width: 300px;
-			height: 450px;
-
-		}
-		.project {
-			margin: 0 auto;
-			a {
-				text-decoration: none;
-				color: #FFF;
-			}
-			i{
-				.overlay.current {
-					padding: 10px 10px;
-					width: 600px;
-					height: 220px;
-					margin-right: 15px;
-					background-color: #018BB0;
-					.title	{
-						padding-right: 20px;
-						font-size: 23px;
-						font-weight: bold;
-						color: #FFF;
-					}
-					.brief {
-						height: 42px;
-						padding-right: 20px;
-						font-size: 18px;
-						color: #FFF;
-					}
-					.subtext{
-						width: 600px;
-						height: 75px;
-						.school_logo_project {
-							margin-left: 20px;
-							height: 75px;
-							width: 75px;
-							float: left;
-						}
-						.timestmp {
-							vertical-align: center;
-							padding-left: 115px;
-							padding-top: 27px;
-							font-size: 18px;
-							color: #FFF;
-						}
-					}
-				}
-				.overlay.old {
-					padding: 10px 10px;
-					width: 600px;
-					height: 220px;
-					margin-right: 15px;
-					background-color: #4A4A4A;
-					.title	{
-						padding-right: 20px;
-						font-size: 23px;
-						font-weight: bold;
-						color: #FFF;
-					}
-					.brief {
-						height: 42px;
-						padding-right: 20px;
-						font-size: 18px;
-						color: #FFF;
-					}
-					.subtext{
-						width: 600px;
-						height: 75px;
-						.school_logo_project {
-							margin-left: 20px;
-							height: 75px;
-							width: 75px;
-							float: left;
-						}
-						.timestmp {
-							vertical-align: center;
-							padding-left: 115px;
-							padding-top: 27px;
-							font-size: 18px;
-							color: #FFF;
-						}
-					}
-				}
-			}
-		padding: 25px 0;
-		@include flexbox;
-		@include flex-direction(column);
-		@include justify-content(space-between);
-		//@include align-items(center);
-		@include flex-wrap(wrap)
-		width: 600px;
-		height: 270px;
-
-		}
-	}
-	.sponsor-container{
-
-	}
-	.github-container{
-		float: left;
-		width: 100%;
-		@include flexbox;
-		@include flex-direction(column);
-		@include justify-content(center);
-		@include align-items(center);
-		.uil-ring-css {
-			transform: scale(0.8); //Inherits from loading-icon
-		}
-		.failResponse {
-			margin: 2% 0;
-			color: #ff0033;
-			text-align: center;
-			font-size: 150%;
-		}
-		.chartBox {
-			width: 100%;
-			position: relative;
-			@include flexbox;
-			@include flex-direction(row);
-			@include justify-content(center);
-			@include align-items(center);
-			.legend {
-				position: absolute;
-				font-size: 15px;
-				ul {
-					list-style-type: none;
-				}
-				li span {
-				    width: 2em;
-				    height: 2em;
-				    display: inline-block;
-				    margin-right: 5px;
-				}
-			}
-			canvas#teamCommitsChart {
-				width: 400px;
-				height: 400px;
-			}
-			canvas#totalCommitsChart {		
-				width: 800px;
-				height: 500px;
-			}
-
-		}
-	}
-	.trello-container {
-		height: 77%;
-	}
-	.current_projects-container {
-
-	}
-	.school-container {
-
-	}
-	
-	.profile-container {
-
-		@include flexbox;
-		@include flex-direction(row);
-		@include justify-content(flex-start);
-		@include align-items(center);
-		.avatar {
-			img{
-				@include flexbox;
-				@include flex-direction(column);
-				@include justify-content(space-between);
-				@include align-items(left);
-				margin: 0 auto;
-				padding: 10% 0;
-				width: 220px;
-				height: 220px;
-			}
-		}
-		.profile-card{
-			width: 100%;
-			margin: 25px;
-			@include box-shadow(2px, -1px, 8px, 0px, rgba(0,0,0,0.75));
-			//padding: 25px;
-			border-radius: 5px;
-			position: relative;
-			background-color: #344553;
-
-			@include flexbox;
-			@include flex-direction(row);
-			//@include justify-content(flex-start);
-			@include align-items(left);
-		
-			.user {
-				margin: 0 auto;
-				font-weight: 800;
-	    		font-size: 115%;
-	    		font-color: #FFF;
-	    		box-sizing: content-box;
-	    		padding: 25px;
-		    	h1.info {
-					color: #FFF;
-					margin-top: 0;
-				}
-				p.info {
-					color: #FFF;
-					font-size: 17px;
-				}
-				i {
-					font-size: 3.3em;
-					color: #FFF;
-				}
-				
-				width: 100%;
-				height: 100%;
-			}
-			.links {
-				padding: 2%;
-				i{
-					color: #FFF;
-					font-size: 250%;
-				}
-			}	
-		
-	}
-	}	
-	.profile-additional-container {
-
-		@include flexbox;
-		@include flex-direction(column);
-		@include justify-content(space-between);
-		@include align-items(center);
-		@include box-shadow(2px, -1px, 8px, 0px, rgba(0,0,0,0.75));
-		margin: 25px;
-		padding: 5px;
-		border-radius: 5px;
-		position: relative;
-		background-color: #018bbb;
-		.info{
-			color: #FFF;
-		}
-		a.info {
-			font-size: 20px;
-		}
-
-	}
-	
+    padding: 0 4% 8% 4%;
+    .title,
+    .brief {
+        padding-left: 20px;
+        color: #344553;
+    }
+    p.brief {
+        font-size: 20px;
+    }
 }
+
+
 

@@ -1,15 +1,25 @@
-ul.sub-nav.nav
-	li 
-		a(href="#").current_projects-section.active Projects
-	li 
-		a(href="#").school-section Schools
-	li 
-		a(href="#").slack-section Slack
-.row.slider
-	.section
-		.slide.col-lg-10
-			include current_projects
-		.slide.col-lg-10
-			include schools
-		.slide.col-lg-10
-			include slack
+{% load staticfiles %}
+{% load avatar_tags %}
+doctype html
+html(lang="en")
+	head
+		title Capstone Tracker
+		link(rel="stylesheet" href="{% static 'css/dashboard_global.css' %}")
+		script(type="text/javascript", src="{% static 'js/global.bundle.js' %}")
+	body
+		include includes/_dashboard_header
+		ul.sub-nav.nav
+			li 
+				a(href="#").current_projects-section.active Projects
+			li 
+				a(href="#").school-section Schools
+			li 
+				a(href="#").slack-section Slack
+		.row.slider
+			.section
+				.slide.col-lg-10
+					include includes/_global_current_projects
+				.slide.col-lg-10
+					include includes/_global_schools
+				.slide.col-lg-10
+					include includes/_global_slack

@@ -1,23 +1,34 @@
-ul.sub-nav.nav.first
-	li 
-		a(href="#").description-section.active Description
-	li 
-		a(href="#").team-section Team
-	li 
-		a(href="#").sponsors-section Sponsors
-	li 
-		a(href="#").github-section Github
-	li 
-		a(href="#").trello-section Trello
-.row.slider
-	.section
-		.slide.col-lg-10
-			include description
-		.slide.col-lg-10
-			include team
-		.slide.col-lg-10
-			include sponsors
-		.slide.col-lg-10
-			include github
-		.slide.col-lg-10
-			include trello
+{% load staticfiles %}
+{% load avatar_tags %}
+doctype html
+html(lang="en")
+	head
+		title Capstone Tracker
+		link(rel="stylesheet" href="{% static 'css/dashboard_project.css' %}")
+		script(type="text/javascript", src="{% static 'js/project.bundle.js' %}")
+	body
+		include includes/_dashboard_header
+		ul.sub-nav.nav.first
+			li 
+				a(href="#").description-section.active Description
+			li 
+				a(href="#").team-section Team
+			li 
+				a(href="#").sponsors-section Sponsors
+			li 
+				a(href="#").github-section Github
+			li 
+				a(href="#").trello-section Trello
+		.row.slider
+			.section
+				.slide.col-lg-10
+					include includes/_project_description
+				.slide.col-lg-10
+					include includes/_project_team
+				.slide.col-lg-10
+					include includes/_project_sponsors
+				.slide.col-lg-10
+					include includes/_project_github
+				.slide.col-lg-10
+					include includes/_project_trello
+
