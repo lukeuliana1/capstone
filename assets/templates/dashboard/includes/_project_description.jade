@@ -1,5 +1,7 @@
 .dashboard-container.description-block
-	h1.title {{project_entry.title}}
+	.title-block
+		h1.title {{project_entry.title}}
+		img.project_logo(src="{{MEDIA_URL}}{{project_entry.image}}")
 	p.brief {{project_entry.brief_description}}
 	.description-container
 		p.description-text {{project_entry.description}}

@@ -15,10 +15,14 @@ html(lang="en")
 				a(href="#").team-section Team
 			li 
 				a(href="#").sponsors-section Sponsors
+			{% if project_entry.github %}
 			li 
 				a(href="#").github-section Github
+			{% endif %}
+			{% if project_entry.trello %}
 			li 
 				a(href="#").trello-section Trello
+			{% endif %}
 		.row.slider
 			.section
 				.slide.col-lg-10
@@ -27,8 +31,17 @@ html(lang="en")
 					include includes/_project_team
 				.slide.col-lg-10
 					include includes/_project_sponsors
+				{% if project_entry.github %}
 				.slide.col-lg-10
 					include includes/_project_github
+				{% endif %}
+				{% if project_entry.trello %}
 				.slide.col-lg-10
 					include includes/_project_trello
+				{% endif %}
+script(type='text/javascript').
+	{% if project_entry.github %}
+	githubExists = true;
+	githubRepoLink = "{{project_entry.github}}";
+	{% endif %}
 

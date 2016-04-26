@@ -2,6 +2,10 @@ from django.contrib.auth.models import AbstractUser, User
 from project.models import Project
 from simple_email_confirmation.models import SimpleEmailConfirmationUserMixin
 from django.db import models
+from os import path
+
+def image_upload_path(instance, filename):
+    return path.join("school-avatars/"+"-".join((instance.name, str(instance.id)))+"/", filename)
 
 
 class School(models.Model):
@@ -9,10 +13,11 @@ class School(models.Model):
     """School - Information about a School."""
 
     name = models.CharField(max_length=255, null=True)
+    school_avatar = models.ImageField(upload_to=image_upload_path, blank=True)
     contact_first_name = models.CharField(max_length=255)
     contact_last_name = models.CharField(max_length=255)
     contact_email = models.EmailField()
-    contact_phone = models.CharField(max_length=10, blank=True)
+    contact_phone = models.CharField(max_length=35, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -42,6 +47,15 @@ class Student(UserProfile):
 
     class Meta:
         verbose_name = 'student'
+        permissions = (
+            ("can_view_students", "Can View Students"),
+            ("can_view_projects", "Can View Projects"),
+            ("can_view_teams", "Can View Teams"),
+        )
+
+    def save(self, *args, **kwargs):
+        self.username = self.email
+        super(Student, self).save(*args, **kwargs)
 
 class Employee(UserProfile):
 
@@ -52,3 +66,13 @@ class Employee(UserProfile):
 
     class Meta:
         verbose_name = 'employee'
+        permissions = (
+            ("can_view_students", "Can View Students"),
+            ("can_view_projects", "Can View Projects"),
+            ("can_view_teams", "Can View Teams"),
+            ("can_view_employees", "Can View Employees")
+        )
+
+    def save(self, *args, **kwargs):
+        self.username = self.email
+        super(Employee, self).save(*args, **kwargs)

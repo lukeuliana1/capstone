@@ -1,46 +1,97 @@
 @import "_flexbox";
+
 .logo {
-	width: 160px;
-	position: absolute;
-	top: 15px;
-	left: 50px;
+    width: 160px;
+    position: absolute;
+    top: 15px;
+    left: 50px;
 }
+
 ul.main-nav.nav {
-	background-color: #FFF;
-	height: 100px;
-	padding: 0 8%;
-	.menu {
-		height: 100%;
-		@include flexbox;
-		@include flex-direction(row);
-		@include justify-content(flex-end);
-		@include align-items(center);
-		li {
-			margin-left: 5%;
-			a {
-				text-decoration: none;
-				background-color: transparent;
-				img {
-					width: 45px;
-					height: 45px;
-				}
-			}
-			a.active {
-				img {
-					background-color: transparent;
-				}
-			}
-		}
-		li.user {
-			display: inline-block;
-			p.username {
-				display: inline-block;
-				margin: 0 0 0 5px;
-				font-size: 140%;
-				color: #344553;
-				vertical-align: middle;
-			}
-		}
-	}
-	
+    background-color: #FFF;
+    height: 100px;
+    padding: 0 8%;
+
+    a {
+        text-decoration: none;
+        background-color: transparent;
+
+        &.active {
+            div {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .menu {
+        height: 100%;
+
+        @include flexbox;
+
+        @include flex-direction(row);
+
+        @include justify-content(flex-end);
+
+        @include align-items(center);
+
+        .folder-icon {
+            background-size: 100% 200%;
+            background-position-y: 2px;
+            width: 58px;
+            height: 53px;
+            background-image: url("/static/images/elements/menu-icons/folder.png");
+
+            &.active {
+                background-position-y: -50px;
+            }
+        }
+
+        .globe-icon {
+            background-size: 100% 206%;
+            background-position-y: 0px;
+            width: 55px;
+            height: 53px;
+            background-image: url("/static/images/elements/menu-icons/global.png");
+
+            &.active {
+                background-size: 100% 200%;
+                background-position-y: -52px;
+            }
+        }
+
+        .profile-icon {
+            background-size: 100% 206%;
+            background-position-y: 0px;
+            width: 55px;
+            height: 53px;
+            background-image: url("/static/images/elements/menu-icons/profile.png");
+
+            &.active {
+                background-size: 100% 200%;
+                background-position-y: -52px;
+            }
+        }
+
+        li {
+            margin-left: 5%;
+
+            &.user {
+                a {
+                    @include flexbox;
+
+                    @include flex-direction(row);
+
+                    @include justify-content(center);
+
+                    @include align-items(center);
+
+                    p.username {
+                        margin: 10px 0 0 10px;
+                        font-size: 140%;
+                        color: #344553;
+                    }
+                }
+            }
+        }
+    }
 }

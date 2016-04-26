@@ -21,6 +21,10 @@ html {
   @include font-smoothing(antialiased);
 }
 
+a {
+	outline: 0;
+}
+
 .button-action {
 	background-color: #1CC531;
 	&:hover, &:focus {

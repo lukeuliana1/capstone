@@ -3,11 +3,23 @@ ul.main-nav.nav
 	.menu.hidden-xs
 		li
 			a(href="/dashboard/global")
-				img(src="{% static 'images/elements/menu-icons/globe.svg' %}").globe-icon
+				{% if global_menu %}
+				.globe-icon.active
+				{% else %}
+				.globe-icon
+				{% endif %}
 		li
-			a(href="/dashboard/").active
-				img(src="{% static 'images/elements/menu-icons/folder.svg' %}").folder-icon
+			a(href="/dashboard/")
+				{% if project_menu %}
+				.folder-icon.active
+				{% else %}
+				.folder-icon
+				{% endif %}
 		li.user
 			a(href="/dashboard/profile")
-				img(src="{% static 'images/elements/menu-icons/profile.svg' %}").profile-icon
+				{% if profile_menu %}
+				.profile-icon.active
+				{% else %}
+				.profile-icon
+				{% endif %}
 				p.username {{request.user.first_name}} {{request.user.last_name}}

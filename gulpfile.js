@@ -16,6 +16,7 @@ var
     sourcemaps = require('gulp-sourcemaps'),
     livereload = require('gulp-livereload'),
     del = require('del'),
+    runSequence = require('run-sequence'),
     exec = require('child_process').exec;
 
 var config = {
@@ -25,21 +26,38 @@ var config = {
     static : './capstoneTracker/capstoneTracker/static/',
 }
 
+gulp.task('livereload', function() {
+    livereload.changed();
+});
+
+gulp.task('collectstatic', function() {
+    //var isWin = /^win/.test(process.platform);
+    var cmd =  "bash -l -c 'workon capstoneTracker && PYTHONUNBUFFERED=1 python ./capstoneTracker/manage.py collectstatic --noinput'";
+    var proc = exec(cmd);
+    livereload.changed(config.static);
+    
+    proc.stderr.on('data', function(data) {
+      process.stdout.write(data);
+    });
+
+    proc.stdout.on('data', function(data) {
+      process.stdout.write(data);
+    });
+});
+
 gulp.task('jade', function() {
     return gulp.src([config.assets + 'templates/**/*.jade', '!' + config.assets + 'templates/template/**/_*.jade'])
         .pipe(jade({
             pretty: true
         }))
         .on('error', console.log)
-        .pipe(gulp.dest(config.templates))
-        .pipe(livereload());
+        .pipe(gulp.dest(config.templates));
 });
 
 gulp.task('email-txt-tamplates', function() {
     return gulp.src([config.assets + 'templates/email/*.txt'])
         .on('error', console.log)
-        .pipe(gulp.dest(config.templates + 'email/'))
-        .pipe(livereload());
+        .pipe(gulp.dest(config.templates + 'email/'));
 });
 
 gulp.task('sass', function() {
@@ -58,8 +76,7 @@ gulp.task('sass', function() {
             config.assets + 'sass/includes']
         }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(config.static + 'css/'))
-    .pipe(livereload());
+    .pipe(gulp.dest(config.static + 'css/'));
 });
 
 
@@ -93,15 +110,14 @@ gulp.task('browserify', function(done) {
                 .pipe(sourcemaps.write('./'))
                 .pipe(gulp.dest(config.static + 'js/'));
         });
-        es.merge(tasks).on('end', done).pipe(livereload());;
+        es.merge(tasks).on('end', done);
     });
 });
 
 gulp.task('images', function() {
     return gulp.src(config.assets + 'images/**/*')
         .pipe(imagemin())
-        .pipe(gulp.dest(config.static + 'images/'))
-        .pipe(livereload());;
+        .pipe(gulp.dest(config.static + 'images/'));
 });
 
 
@@ -114,19 +130,6 @@ gulp.task('bower_components', function() {
 gulp.task('bower', function() { 
     return bower()
          .pipe(gulp.dest(config.bowerDir)) 
-});
-
-gulp.task('collectstatic', function() {
-    var isWin = /^win/.test(process.platform);
-    var cmd =  "bash -l -c 'workon capstoneTracker && PYTHONUNBUFFERED=1 python ./capstoneTracker/manage.py collectstatic --noinput'";
-    var proc = exec(cmd);
-    proc.stderr.on('data', function(data) {
-      process.stdout.write(data);
-    });
-
-    proc.stdout.on('data', function(data) {
-      process.stdout.write(data);
-    });
 });
 
 gulp.task('clean', function () {
@@ -159,9 +162,9 @@ gulp.task('runserver', function() {
 
 gulp.task('default', ['bower', 'jade', 'email-txt-tamplates', 'sass', 'images', 'browserify', 'icons', 'fonts', 'collectstatic'], function() {
     livereload.listen();
-    gulp.watch(config.assets + 'sass/**/*.scss', ['sass', 'collectstatic']);
-    gulp.watch(config.assets + 'templates/**/*.jade', ['jade', 'collectstatic']);
-    gulp.watch(config.assets + 'templates/email/*.txt', ['email-txt-tamplates', 'collectstatic']);
-    gulp.watch(config.assets + 'images/**/*', ['images', 'collectstatic']);
-    gulp.watch(config.assets + 'js/**/*', ['browserify', 'collectstatic']);
+    gulp.watch(config.assets + 'sass/**/*.scss', function(){runSequence('sass', 'collectstatic')});
+    gulp.watch(config.assets + 'templates/**/*.jade', function(){runSequence('jade', 'collectstatic')});
+    gulp.watch(config.assets + 'templates/email/*.txt', function(){runSequence('email-txt-tamplates', 'collectstatic')});
+    gulp.watch(config.assets + 'images/**/*', function(){runSequence('images', 'collectstatic')});
+    gulp.watch(config.assets + 'js/**/*', function(){runSequence('browserify', 'collectstatic')});
 });

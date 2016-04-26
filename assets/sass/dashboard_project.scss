@@ -1,6 +1,51 @@
 @import "base";
 @import "dashboard";
 
+.sub-nav {
+    a.description-section.active:after {
+        left: 53%;
+    }
+
+    a.team-section.active:after {
+        left: 55%;
+    }
+
+    a.sponsors-section.active:after {
+        left: 54%;
+    }
+
+    a.github-section.active:after {
+        left: 55%;
+    }
+
+    a.trello-section.active:after {
+        left: 55%;
+    }
+}
+
+.description-block {
+    .project_logo {
+        border-radius: 50px;
+        margin-left: 20px;
+        height: 75px;
+        width: 75px;
+    }
+
+    .title-block {
+        margin-top: 20px;
+        
+        @include flexbox;
+
+        @include flex-direction(row);
+
+        @include justify-content(flex-start);
+
+        @include align-items(center);
+
+        @include flex-wrap(wrap);
+    }
+}
+
 .description-container {
     @include box-shadow(2px, -1px, 8px, 0px, rgba(0, 0, 0, 0.75));
 

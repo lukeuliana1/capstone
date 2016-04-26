@@ -1,35 +1,23 @@
 .dashboard-container.current_projects-block
 	h1.title Capstone Projects
 	.row.current_projects-container.participants
+		{% for project in projects %}
 		.col-lg-6.project
-			a(href="#") 
+			a(href="/dashboard/{{project.slug}}") 
 				.overlay.current
+					h2.title {{project.title}}
+					p.brief {{project.brief_description}}
+					.subtext
+						{% if project.image %}
+						img(src="{{MEDIA_URL}}{{project.image}}").school_logo_project
+						{% endif %}
+						p.timestmp {{project.created | date:'Y-m-d'}}
+		{% endfor %}
+		//.col-lg-6.project //Old project
+			a(href="#") 
+				.overlay.old //Notice this .old class
 					h2.title Capstone Tracker
 					p.brief Web application enabling communication between the school's Capstone Project Team and Capital One
-					.subtext
-						img(src="{% static 'images/psu.jpg' %}").school_logo_project
-						p.timestmp Spring 2016
-		.col-lg-6.project
-			a(href="#") 
-				.overlay.current
-					h2.title Project Title
-					p.brief Short Description of Project
-					.subtext
-						img(src="{% static 'images/psu.jpg' %}").school_logo_project
-						p.timestmp Spring 2016
-		.col-lg-6.project
-			a(href="#") 
-				.overlay.old
-					h2.title Capstone Tracker
-					p.brief Web application enabling communication between the school's Capstone Project Team and Capital One
-					.subtext
-						img(src="{% static 'images/psu.jpg' %}").school_logo_project
-						p.timestmp Fall 2015
-		.col-lg-6.project
-			a(href="#") 
-				.overlay.old
-					h2.title Project Title
-					p.brief Short Description of Project
 					.subtext
 						img(src="{% static 'images/psu.jpg' %}").school_logo_project
 						p.timestmp Fall 2015

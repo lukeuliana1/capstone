@@ -1,6 +1,10 @@
 @import "base";
 @import "dashboard";
 
+.sub-nav {
+    @include justify-content(space-between);
+}
+
 .profile-container {
     @include flexbox;
 

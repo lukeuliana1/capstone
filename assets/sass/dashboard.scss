@@ -14,6 +14,7 @@
     @include flexbox;
     @include flex-direction(row);
     @include align-items(center);
+    @include justify-content(center);
     li {
         margin: 0 6%;
         a {
@@ -42,28 +43,6 @@
         a.active.scrolled:after {
             border-top-color: transparent;
         }
-        a.description-section.active:after {
-            left: 53%;
-        }
-        a.team-section.active:after {
-            left: 55%;
-        }
-        a.sponsors-section.active:after {
-            left: 54%;
-        }
-        a.github-section.active:after {
-            left: 55%;
-        }
-        a.trello-section.active:after {
-            left: 55%;
-        }
-    }
-    &.first {
-        @include justify-content(center);
-    }
-    &.profile {
-        @include justify-content(flex-end);
-        padding: 0;
     }
 }
 

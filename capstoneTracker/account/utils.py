@@ -10,6 +10,7 @@ def generate_temp_password():
     return ''.join(rnd.choice(chars) for i in range(length))
 
 def send_confirmation_email(user):
+    #Bug in simple_email_confirmation: refer to https://github.com/mfogel/django-simple-email-confirmation/issues/22
     try:    
         confirmation_key = user.confirmation_key
     except:

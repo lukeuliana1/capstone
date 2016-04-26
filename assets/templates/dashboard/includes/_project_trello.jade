@@ -1,5 +1,5 @@
 .dashboard-container.trello-block
 	h1.title Trello
-	p.brief Capstone Tracker Project Team
+	p.brief {{project_entry.title}} Team
 	.trello-container
-		iframe#trelloIframe(src="https://trello.com/b/fa1VjgZB.html" frameBorder="0" width="100%" height="100%")
+		iframe#trelloIframe(src="https://trello.com/{{project_entry.trello|slice:':-1'}}.html" frameBorder="0" width="100%" height="100%")

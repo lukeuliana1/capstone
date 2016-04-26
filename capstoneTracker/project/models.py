@@ -5,7 +5,7 @@ from taggit.managers import TaggableManager
 # Create your models here.
 
 def image_upload_path(instance, filename):
-    return os.path.join("project-images/"+"-".join((instance.title, str(instance.id)))+"/", filename)
+    return path.join("project-images/"+"-".join((instance.title, str(instance.id)))+"/", filename)
 
 
 class Project(models.Model):
@@ -13,10 +13,10 @@ class Project(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(
             max_length=200, unique=True, blank=False, editable=True)    
-    brief_description = models.CharField(max_length=300)
+    brief_description = models.CharField(max_length=100)
     description = models.TextField()
-    github = models.URLField(blank=True)
-    trello = models.URLField(blank=True)
+    github = models.CharField(max_length=100, blank=True)
+    trello = models.CharField(max_length=100, blank=True)
     image = models.ImageField(upload_to=image_upload_path, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     tags = TaggableManager()
@@ -34,4 +34,5 @@ class Project(models.Model):
         if self.slug == "":
             self.slug = slugify(self.title)
             self.slug = "-".join((self.slug, str(self.id)))
+
 
