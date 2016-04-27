@@ -22,7 +22,7 @@ Before starting working on the project !Please! do some research about Django an
 
 Also, read all comments in the code, and follow instuctions below.
 
-### Good Luck!
+##### Good Luck!
 
 P.S. Feel free to delete this intro if needed
 
@@ -113,11 +113,11 @@ P.S. Feel free to delete this intro if needed
 <br>
 P.S. Do not try to edit PopulateDatabaseWithFakeData.py unless you already carefully read the code and you know what you are doing
 <br><br>
-P.P.S. All student users have following account credentials: FirstnameLastname@gmail.com:123
+P.P.S. All student users have following account credentials: FirstnameLastname@gmail.com:123 <br>
        All employee users have following account credentials: FirstnameLastname@capitalone.com:123
 
-## How to Create Superuser (admin) <a id='createsuperuser"></a>
-`./manage.py createsuperuser` and follow steps
+## How to Create Superuser (admin) <a id="createsuperuser"></a>
+<p>In terminal type `./manage.py createsuperuser` and follow steps
 
 ## MySQL Notes <a id="mysql-notes"></a>
 * When creating the root account if asked to create a root password, you must
