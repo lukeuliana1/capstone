@@ -41,7 +41,7 @@ P.S. Feel free to delete this intro if needed
 * MySQL
 * NodeJS (NPM)
 
-#### Windows
+#### Windows (Setup would be harder, virtual machine is prefered)
 ##### Be sure to add python34 and python34/Scripts to you PATH
 * Python 3.4
 * Pip ( should be installed with the python3.4 installation)
@@ -66,7 +66,7 @@ P.S. Feel free to delete this intro if needed
    <p>`$ workon capstoneTracker`
 7. Install package dependencies:
    <p>`$ pip install -r requirements.txt`
-   <p>If requirements.txt updated follow step 7, otherwise skip it
+   <p>If requirements.txt was updated follow step 7, otherwise skip it
 8. Navigate into capstoneTracker directory:
    <p>`$ cd capstoneTracker`
 9. Makemigrations for database:
