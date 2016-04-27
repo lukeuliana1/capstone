@@ -3,7 +3,7 @@
 	.row.current_projects-container.participants
 		{% for project in projects %}
 		.col-lg-6.project
-			a(href="/dashboard/{{project.slug}}") 
+			a(href="/dashboard/project/{{project.slug}}") 
 				.overlay.current
 					h2.title {{project.title}}
 					p.brief {{project.brief_description}}

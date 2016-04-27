@@ -23,6 +23,10 @@ html {
 
 a {
 	outline: 0;
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 .button-action {

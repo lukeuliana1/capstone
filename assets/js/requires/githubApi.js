@@ -4,7 +4,7 @@ var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July'
 function init(githubRepoLink) {
 
     $.ajax({
-            url: "https://api.github.com/repos/"+githubRepoLink+"/stats/contributors",
+            url: githubRepoLink+"/stats/contributors",
             type: "GET"
         })
         .done(function(response) {
@@ -30,7 +30,7 @@ function init(githubRepoLink) {
         });
 
     $.ajax({
-        url: "https://api.github.com/repos/"+githubRepoLink+"/stats/commit_activity",
+        url: githubRepoLink+"/stats/commit_activity",
         type: "GET"
     }).done(function(response) {
         $(".loading.second").addClass("hidden");

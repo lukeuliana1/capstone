@@ -6,7 +6,7 @@
 		.user
 			{% avatar student %}
 			a(href="#") {{student.first_name}} {{student.last_name}}
-			a(href="#") {{student.email}}
+			a(href="mailto:{{student.email}}") {{student.email}}
 		{% endfor %}
 
 

@@ -1,5 +1,4 @@
 from django.contrib.auth.models import AbstractUser, User
-from project.models import Project
 from simple_email_confirmation.models import SimpleEmailConfirmationUserMixin
 from django.db import models
 from os import path
@@ -26,8 +25,18 @@ class School(models.Model):
 
 
 class UserProfile(SimpleEmailConfirmationUserMixin, AbstractUser):
-	pass
-    #someAdditionalVar = models.BooleanField(default=False)
+
+    def is_employee(self, *args, **kwargs):
+        if hasattr(self, 'employee'):
+            return True
+        else:
+            return False
+
+    def is_student(self, *args, **kwargs):
+        if hasattr(self, 'student'):
+            return True
+        else:
+            return False
 
 class Student(UserProfile):
 
@@ -38,7 +47,7 @@ class Student(UserProfile):
         ('SP', 'Spring'),
         ('SU', 'Summer')
     )
-    project = models.ForeignKey(Project, blank=True, null=True)
+    project = models.ForeignKey('project.Project', blank=True, null=True, on_delete=models.CASCADE)
     grad_semester = models.CharField(max_length=2, choices=SEMESTER_OPTIONS, null=True, blank=True)
     grad_year = models.PositiveIntegerField(null=True, blank=True)
     major = models.CharField(max_length=255, null=True, blank=True)
@@ -60,7 +69,6 @@ class Student(UserProfile):
 class Employee(UserProfile):
 
     """Employee - Information about a Employee."""
-    project = models.ForeignKey(Project, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, blank=True)
 

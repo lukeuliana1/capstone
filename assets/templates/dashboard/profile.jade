@@ -9,33 +9,18 @@ html(lang="en")
 	body
 		include includes/_dashboard_header
 		ul.sub-nav
+			{% if request.user.employee %}
 			li 
-				a(href="#").profile-section Create Project
+				a(href="#") Create Project
+			{% endif %}
+			li
+				a(href="#").profile-section Profile
 			li 
-				a(href="#").profile-section Logout
-		.dashboard-container.profile-block
-			.profile-container
-				.avatar
-					{% avatar student %}
-				.profile-card
-					.user
-						h1.info Lauren Winkler
-						p.info lnw5080@psu.edu
-						p.info The Pennsylvania State University
-						p.info Computer Science
-						p.info Graduation: May 2016
-					.links
-						i.fa.fa-file-text
-					.links
-						i.fa.fa-linkedin-square
-					.links
-						i.fa.fa-pencil-square
-			.project
-				a(href="#") 
-					.overlay.current
-						img(src="{% static 'images/psu.jpg' %}").school_logo_project
-						h2.title Capstone Tracker
-						p.brief Web application enabling communication between the school's Capstone Project Team and Capital One
+				a(href="/account/logout") Logout
+		.row.slider
+			.section
+				.slide.col-lg-12
+					include includes/_profile_profile
 							
 							
 		

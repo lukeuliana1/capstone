@@ -9,7 +9,7 @@ from random import randrange
 random_student_names = ["Delphia Strunk", "Aurora Kopczynski", "Estefana Chadburn", "Ora Argo", "Wai Buckman", "Bridgett Crimi", "Emilia Butters", "Louisa Lajoie", "Olene Forte", "Stephane Davisson", "Ernest Theis", "Gaynell Niel", "Kathrin Bittle", "Earl Guin", "Janise Watson", "Amado Dorr", "Leeanna Moises", "Mazie Couey", "Vernia Lucarelli",
                         "Al Fawley", "Tarra Durrant", "Kimberly Ochoa", "Napoleon Meyerson", "Jean Wilkens", "Madalene Wiedman", "Jaimie Guido", "Holley Archie", "Karren Bavaro", "Shelton Mancha", "Emma Waltman", "Jayne Beam", "Audrie Canela", "Bailey Philson", "Macie Diener", "Florida Baudoin", "Keeley Newcombe", "August Dudgeon", "Cierra Tiedemann", "Nam Baldonado"]
 random_employee_names = ["Sacha Striplin", "Zulema Wisener", "Dottie Linden",
-                         "May Lipsett", "Kaitlyn Hulen", "Luisa Lally", "Rolanda Provence"]
+                         "May Lipsett", "Kaitlyn Hulen", "Luisa Lally", "Rolanda Provence", "John Wick"]
 random_school_contact_names = [
     "Carole Besse", "Delana Stodola", "Matt Tarrant", "Nadene Ference"]
 school_names_and_avatars = {
@@ -25,6 +25,8 @@ project_names_and_avatars = {
     "Quadcopter XL": "http://www.robotshop.com/media/files/images2/550mm-rtf-quadcopter-uav-1-large.jpg"
 }
 project_names = list(project_names_and_avatars.keys())
+project_github_repos = ["https://github.com/sozialhelden/wheelmap", "https://github.com/segmentio/nightmare", "https://github.com/KevinBatdorf/codaslider", "https://github.com/MaisonLogicielLibre/Website"]
+project_trello_pages = ["https://trello.com/b/rq2mYJNn/public-trello-boards", "https://trello.com/b/OFcSzY6W/reading-colloquium", "https://trello.com/b/pD1eFfJg/blogging-ponce-de-leon-churches", "https://trello.com/b/UQqGyNFG/interview-pipeline"]
 brief_description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin urna odio."
 description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin urna odio, vel mattis ligula pulvinar et. Nulla urna urna, laoreet id nibh egestas, volutpat lobortis metus. Vestibulum ac velit euismod, bibendum elit a, blandit nunc. Fusce tincidunt metus justo, eleifend pretium augue ullamcorper non. Proin blandit fermentum aliquet. Vestibulum efficitur urna a mollis bibendum. Aenean rutrum interdum arcu, vitae fermentum mi efficitur in. Cras dictum, neque vitae mollis tristique, ante metus eleifend ante, et pellentesque sapien felis sit amet ante. Suspendisse eget sollicitudin est. Etiam at lacus nunc. Sed viverra interdum cursus."
 
@@ -52,29 +54,15 @@ for i in range(len(school_names_and_avatars)):
         school.save()
 
 print("Finished populating Schools")
-
-# Populating precreated projects
-for i in range(len(project_names_and_avatars)):
-    if not Project.manager.filter(title=project_names[i]):
-        project = Project(title=project_names[
-                          i], brief_description=brief_description, description=description)
-        project.save()
-        download_image(
-            project.title, project.image, project_names_and_avatars[project_names[i]])
-        for tag in project.title.split(' '):
-            project.tags.add(tag)
-        project.save()
-
-print("Finished populating Projects")
+###
 
 # Populating precreated Employees
-project_list = Project.manager.all()
 for employee_name in random_employee_names:
     first_name = employee_name.split(' ')[0]
     last_name = employee_name.split(' ')[1]
-    if not Employee.objects.filter(first_name=first_name, last_name=last_name, email=first_name+last_name+"@gmail.com"):
+    if not Employee.objects.filter(first_name=first_name, last_name=last_name, email=first_name+last_name+"@capitalone.com"):
         employee = Employee(first_name=first_name, last_name=last_name, email=first_name+last_name +
-                            "@gmail.com", project=project_list[randrange(len(project_list))], position="Supervisor")
+                            "@gmail.com", position="Supervisor")
         employee.set_password("123")
         employee.save()
         try:
@@ -84,6 +72,25 @@ for employee_name in random_employee_names:
         employee.confirm_email(confirmation_key)
 
 print("Finished populating Employees")
+###
+
+# Populating precreated projects
+employee_list = list(Employee.objects.all())
+for i in range(len(project_names_and_avatars)):
+    if not Project.manager.filter(title=project_names[i]):
+        project = Project(title=project_names[
+                          i], brief_description=brief_description, description=description, github=project_github_repos[i], trello=project_trello_pages[i])
+        project.save()
+        project.sponsors.add(employee_list.pop())
+        project.sponsors.add(employee_list.pop())
+        download_image(
+            project.title, project.image, project_names_and_avatars[project_names[i]])
+        for tag in project.title.split(' '):
+            project.tags.add(tag)
+        project.save()
+
+print("Finished populating Projects")
+###
 
 # Populating precreated Students
 school_list = School.objects.all()
@@ -103,3 +110,4 @@ for student_name in random_student_names:
         student.confirm_email(confirmation_key)
 
 print("Finished populating Students")
+###

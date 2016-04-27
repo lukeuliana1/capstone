@@ -6,6 +6,7 @@ from django.db import IntegrityError
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import (PasswordChangeForm, SetPasswordForm)
 from .forms import PasswordResetForm
+from dashboard.views import profile_page
 
 from django.contrib.auth.tokens import default_token_generator
 from django.http import Http404, HttpResponse, JsonResponse
@@ -36,8 +37,6 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None and user.is_confirmed:
             auth.login(request, user)
-            # if request.GET["next"]:
-            # return HttpResponseRedirect(request.GET["next"])
             return HttpResponse("success", content_type="text/plain")
         else:
             return HttpResponse("Credentials are not valid", content_type="text/plain")
@@ -57,7 +56,6 @@ def register_employee(request):
         if form.is_valid():
             try:
                 user = form.save()
-                user.groups.add(Group.objects.get(name='Employee Users'))
                 send_confirmation_email(user)
                 return HttpResponse("success", content_type="text/plain")
             except IntegrityError as e: #Duplicate email error
@@ -90,7 +88,7 @@ def confirm_email(request):
 
 @login_required(login_url='/account/login/')
 def profile(request):
-    return render_to_response('account/profile.html', RequestContext(request))
+    return redirect(profile_page)
 
 @never_cache
 def logout(request):

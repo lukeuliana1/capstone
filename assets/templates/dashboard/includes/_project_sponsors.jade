@@ -2,11 +2,11 @@
 	h1.title Sponsors
 	p.brief {{project_entry.title}}
 	.sponsors-container.participants
-		{% for employee in employees %}
+		{% for sponsor in sponsors %}
 		.user
-			{% avatar employee %}
-			a(href="#").name {{employee.first_name}} {{employee.last_name}}
-			a(href="#").email {{employee.email}}
+			{% avatar sponsor %}
+			a(href="#").name {{sponsor.first_name}} {{sponsor.last_name}}
+			a(href="mailto:{{sponsor.email}}").email {{sponsor.email}}
 		{% endfor %}
 
 

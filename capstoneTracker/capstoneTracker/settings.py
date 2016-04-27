@@ -26,6 +26,7 @@ SECRET_KEY = '2-n2wx9!9j*6jk9^&7a4)grmo-#og%1#19h8gy5zq&c8r13hfo'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+ALLOWED_EMAIL_DOMAIN = "capitalone.com"
 
 
 # Application definition
@@ -82,13 +83,16 @@ TEMPLATES = [
     },
 ]
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-DEFAULT_FROM_EMAIL = 'psucapstonetracker@gmail.com'
-SERVER_EMAIL = 'psucapstonetracker@gmail.com'
-EMAIL_HOST_USER = 'psucapstonetracker@gmail.com'
-EMAIL_HOST_PASSWORD = 'alverbanec'
-EMAIL_PORT = 587
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com'
+    DEFAULT_FROM_EMAIL = 'psucapstonetracker@gmail.com'
+    SERVER_EMAIL = 'psucapstonetracker@gmail.com'
+    EMAIL_HOST_USER = 'psucapstonetracker@gmail.com'
+    EMAIL_HOST_PASSWORD = 'alverbanec'
+    EMAIL_PORT = 587
 
 AVATAR_GRAVATAR_BACKUP = False
 AVATAR_DEFAULT_URL = "/images/default-avatar.svg"

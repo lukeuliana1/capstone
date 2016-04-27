@@ -11,12 +11,13 @@ def image_upload_path(instance, filename):
 class Project(models.Model):
     manager = models.Manager()
     title = models.CharField(max_length=200)
+    sponsors = models.ManyToManyField('account.Employee')
     slug = models.SlugField(
             max_length=200, unique=True, blank=False, editable=True)    
     brief_description = models.CharField(max_length=100)
     description = models.TextField()
-    github = models.CharField(max_length=100, blank=True)
-    trello = models.CharField(max_length=100, blank=True)
+    github = models.URLField(blank=True)
+    trello = models.URLField(blank=True)
     image = models.ImageField(upload_to=image_upload_path, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     tags = TaggableManager()

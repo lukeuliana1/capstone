@@ -21,6 +21,7 @@
    <p>`$ cd capstone`
 2. Pull latest updates from Github repo:
    <p>`$ git pull`
+> If bower.json was updated follow step 3, otherwise skip it
 3. Install gulp and bower dependencies:
    <p>`$ sudo npm install && bower install`
 4. Start Gulp:
@@ -29,6 +30,7 @@
    <p>
 6. Activate virtual environment:
    <p>`$ workon capstoneTracker`
+> If requirements.txt updated follow step 7, otherwise skip it
 7. Install package dependencies:
    <p>`$ pip install -r requirements.txt`
 8. Navigate into capstoneTracker directory:
@@ -52,11 +54,11 @@
    <p>`$ mkvirtualenv -p python3.4 capstoneTracker`
 
 4. Go into you're local environment if not already there:
-  	<p>`$ workon capstoneTracker`
-    <p>(capstone-project) should appear at the start of your command prompt
+    <p>`$ workon capstoneTracker`
+    <p>`(capstoneTracker)$ ` should appear at the start of your command prompt
 
 5. Install all the requirements:
-	<p>`$ pip3 install -r requirements.txt`
+  <p>`$ pip3 install -r requirements.txt`
 
 6. Create local database
     <p>`$ mysql -u root`
@@ -64,14 +66,9 @@
     <p>`$ quit`
 
 7. Set up the database: (for windows do not include ./)
-    <p>`$ ./capstoneTracker/manage.py migrate`
-	  <p>`$ ./capstoneTracker/manage.py makemigrations`
-	  <p>`$ ./capstoneTracker/manage.py migrate`
-
-7. Create Groups/Permissions: (for windows do not include ./)
-    <p>`$ ./capstoneTracker/manage.py shell < ./capstoneTracker/capstoneTracker/create_groups.py`
     <p>`$ ./capstoneTracker/manage.py makemigrations`
     <p>`$ ./capstoneTracker/manage.py migrate`
+
 8. Install npm packages
     <p>`$ sudo npm install`
 

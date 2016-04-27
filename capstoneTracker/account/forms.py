@@ -11,6 +11,7 @@ from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.template import loader
+from django.conf import settings
 
 class StudentCreationForm(forms.ModelForm):
     class Meta:
@@ -59,7 +60,7 @@ class EmployeeCreationForm(forms.ModelForm):
         if not email:
             raise ValidationError("You must enter a valid email")
             # if you don't want this functionality, just remove it.
-        if domain != "gmail.com":
+        if domain != settings.ALLOWED_EMAIL_DOMAIN:
             raise ValidationError("Your email's domain must belong to @capitalone.com")
         return email
 

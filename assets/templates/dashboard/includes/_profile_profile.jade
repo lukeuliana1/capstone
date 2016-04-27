@@ -1,0 +1,39 @@
+.dashboard-container.profile-block
+	.profile-container
+		.avatar
+			{% avatar student %}
+		.profile-card
+			.user
+				h1.info {{request.user.first_name}} {{request.user.last_name}}
+				p.info {{request.user.email}}
+				{% if request.user.employee %}
+				p.info Employee/Sponsor
+				{% endif %}
+				{% if request.user.student.school %}
+				p.info {{request.user.student.school}}
+				{% endif %}
+				{% if request.user.student.major %}
+				p.info {{request.user.student.major}}
+				{% endif %}
+				{% if request.user.student.grad_year and request.user.student.grad_semester %}
+				p.info Graduation: {{request.user.student.grad_semester}} {{request.user.student.grad_year}}
+				{% endif %}
+			.links
+				a(href="#")
+					i.fa.fa-file-text
+			.links
+				a(href="#")
+					i.fa.fa-linkedin-square
+			.links
+				a(href="#")
+					i.fa.fa-pencil-square
+	.project
+		{% for project in project_set %}
+		a(href="/dashboard/project/{{project.slug}}") 
+			.overlay.current
+				{% if project.image %}
+				img(src="{{MEDIA_URL}}{{project.image}}").school_logo_project
+				{% endif %}
+				h2.title {{project.title}}
+				p.brief {{project.brief_description}}
+		{% endfor %}

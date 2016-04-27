@@ -42,6 +42,10 @@ html(lang="en")
 script(type='text/javascript').
 	{% if project_entry.github %}
 	githubExists = true;
-	githubRepoLink = "{{project_entry.github}}";
+	var parser = document.createElement('a');
+	parser.href = "{{project_entry.github}}"; //Given https://github.com/user/repo -> Needed https://api.github.com/repos/user/repo
+	parser.pathname = parser.pathname.replace(/^/,'/repos');
+	parser.hostname = parser.hostname.replace(/^/,'api.');
+	githubRepoLink = parser.href; //Done
 	{% endif %}
 

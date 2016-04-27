@@ -2,4 +2,4 @@
 	h1.title Trello
 	p.brief {{project_entry.title}} Team
 	.trello-container
-		iframe#trelloIframe(src="https://trello.com/{{project_entry.trello|slice:':-1'}}.html" frameBorder="0" width="100%" height="100%")
+		iframe#trelloIframe(src="{{project_entry.trello|truncatewords_html:5|slice:':-4'}}.html" frameBorder="0" width="100%" height="100%") //Special url parse for embedding refer to http://jsfiddle.net/danlec/hmQJP/
