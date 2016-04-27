@@ -1,4 +1,20 @@
-## Prerequisites
+# Table of Contents
+  * [Useful Links](#useful-links)
+  * [Prerequisites](#prerequisites)
+  * [Launch Project](#launch-project)
+  * [Localhost Setup](#localhost-setup)
+  * [MySQL Notes](#mysql-notes)
+  * [Virtualenv Notes](#virtualenv-notes)
+  * [Adding Code Instructions](#adding-code)
+
+
+## Useful Links<a id="useful-links"></a>
+1. [Trello board for this repo](https://trello.com/b/fa1VjgZB/captostonetracker "Trello board for this repo")
+2. [Automated Code Review](https://www.quantifiedcode.com/ "QuantifiedCode")
+3. [Live Interactive Cross Browser Testing](https://www.browserling.com/ "Browserling")
+4. [Analyze Web Site Speed] (https://gtmetrix.com/ GTmetrix)
+
+## Prerequisites<a id="prerequisites"></a>
 #### OSX/Linux
 * Python 3.4
 * Pip (should be installed with python 3.4 installation)
@@ -16,14 +32,14 @@
 * MySQL
 * NodeJS (NPM)
 
-## Launch a project
+## Launch Project<a id="launch-project"></a>
 1. Navigate into capstone repo:
    <p>`$ cd capstone`
 2. Pull latest updates from Github repo:
    <p>`$ git pull`
 3. Install gulp and bower dependencies:
    <p>`$ sudo npm install && bower install`
-   <p>**If bower.json was updated follow step 3, otherwise skip it**
+   <p>>If bower.json was updated follow step 3, otherwise skip it
 4. Start Gulp:
    <p>`$ gulp`
 5. Open new terminal
@@ -32,7 +48,7 @@
    <p>`$ workon capstoneTracker`
 7. Install package dependencies:
    <p>`$ pip install -r requirements.txt`
-   <p>**If requirements.txt updated follow step 7, otherwise skip it**
+   <p>>If requirements.txt updated follow step 7, otherwise skip it
 8. Navigate into capstoneTracker directory:
    <p>`$ cd capstoneTracker`
 9. Makemigrations for database:
@@ -43,7 +59,7 @@
    <p>`$ ./manage.py runserver`
 
 
-## Localhost Setup
+## Localhost Setup<a id="localhost-setup"></a>
 1. Clone the repository:
    <p>`$ git clone https://github.com/yeralin/capstone.git capstone`
 
@@ -72,7 +88,7 @@
 8. Install npm packages
     <p>`$ sudo npm install`
 
-## MySQL Notes
+## MySQL Notes<a id="mysql-notes"></a>
 * When creating the root account if asked to create a root password, you must
  remove the root password in order to run the syncdb and migrations call.
   <p>`$ mysql -u root -p`
@@ -83,17 +99,15 @@
   <p>`$ mysql.server start`
   <p>`$ mysql.server stop`
 
-##Virtual Env Notes
+##Virtualenv Notes<a id="virtualenv-notes"></a>
 * If you are having issues running the mkvirtualenv or workon commands, make sure you have your vitrual env python and variable are set correctly. Adding these three lines to your .bash_profile should do the trick:
 <p> `export WORKON_HOME=$HOME/.virtualenvs`  (This should be set to where ever your .virtualenvs directory is)
 <p> `export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3` (This should be set to where ever your Python3 is located)
 <p> `source /usr/local/bin/virtualenvwrapper.sh` (This should be where ever your virtualenvwrapper.sh can be found)
 * In order to stop working within your virtualenv just type deactivate in your command prompt
 
-## Adding code
+## Adding code<a id="adding-code"></a>
 Once you have completed your additions to files run the make file to check if your
 code can be committed. Your code will be checked against the pep8 standards and
 a code coverage check will be run. You want to conform to all standards and
 have 100% code coverage.
-
-For non linux running the make file will be almost impossible to run, you will be able to commit but it is easiest to keep code consistant with these standards in place.
