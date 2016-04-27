@@ -21,18 +21,18 @@
    <p>`$ cd capstone`
 2. Pull latest updates from Github repo:
    <p>`$ git pull`
-> If bower.json was updated follow step 3, otherwise skip it
 3. Install gulp and bower dependencies:
    <p>`$ sudo npm install && bower install`
+   **If bower.json was updated follow step 3, otherwise skip it**
 4. Start Gulp:
    <p>`$ gulp`
 5. Open new terminal
    <p>
 6. Activate virtual environment:
    <p>`$ workon capstoneTracker`
-> If requirements.txt updated follow step 7, otherwise skip it
 7. Install package dependencies:
    <p>`$ pip install -r requirements.txt`
+   **If requirements.txt updated follow step 7, otherwise skip it**
 8. Navigate into capstoneTracker directory:
    <p>`$ cd capstoneTracker`
 9. Makemigrations for database:
