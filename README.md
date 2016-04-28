@@ -5,6 +5,7 @@
   * [Localhost Setup](#localhost-setup)
   * [Populate Database with Fake Data](#populate-database)
   * [How to Create Superuser (admin)](#createsuperuser)
+  * [Sending emails (confirmations, lost passwords, ect.)](#sending-email)
   * [MySQL Notes](#mysql-notes)
   * [Virtualenv Notes](#virtualenv-notes)
   * [Adding Code Instructions](#adding-code)
@@ -118,6 +119,9 @@ P.P.S. All student users have following account credentials: FirstnameLastname@g
 
 ## How to Create Superuser (admin) <a id="createsuperuser"></a>
 <p>In terminal type `./manage.py createsuperuser` and follow steps
+
+## Sending emails (confirmations, lost passwords, ect.)<a id="sending-email"></a>
+Right now all emails are "sent" to terminal (take a look at lines 86-95 in settings.py). When DEBUG is true, then all emails will be sent to Terminal, otherwise it will use precreated gmail account (or any other email service) for sending email messages. Feel free to change it.
 
 ## MySQL Notes <a id="mysql-notes"></a>
 * When creating the root account if asked to create a root password, you must
