@@ -21,10 +21,10 @@ def project_page_user(request):
 
 def project_page_request(request):
     project_slug = request.path.split('/')[-1]
-    project_entry = Project.manager.filter(slug=project_slug)[0]
-    if project_entry is not None:
+    try:
+        project_entry = Project.manager.get(slug=project_slug)
         return render_to_response('dashboard/project.html', {"project_entry": project_entry, "students": project_entry.student_set.all(), "sponsors": project_entry.sponsors.all(), "project_menu":True}, RequestContext(request))
-    else:
+    except Project.DoesNotExist:
         raise Http404
 
 
