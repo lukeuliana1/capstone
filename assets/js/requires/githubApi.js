@@ -1,4 +1,4 @@
-var color_array = ['#018BBB', '#00374A', '#4DADCF', '#006182', '#B2DCEA', '#344653', '#B3B9BE', '#67747E', '#000000', '#E5F3F8'];
+var color_array = ['#018BBB', '#00374A', '#4DADCF', '#006182', '#B2DCEA', '#344653', '#B3B9BE', '#67747E', '#E5F3F8'];
 var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 function init(githubRepoLink) {
@@ -82,9 +82,7 @@ function init(githubRepoLink) {
 
 function getRandomColor(x) {
     //Keep poping precreated colors from array
-    if (typeof x !== "undefined") {
-        return color_array.splice(x, 1)[0];
-    } else if (color_array.length !== 0) {
+    if (color_array.length !== 0) {
         return color_array.pop();
     } else { //If precreated colors array is empty, generate random color
         var letters = '0123456789ABCDEF'.split('');

@@ -25,8 +25,8 @@ project_names_and_avatars = {
     "Quadcopter XL": "http://www.robotshop.com/media/files/images2/550mm-rtf-quadcopter-uav-1-large.jpg"
 }
 project_names = list(project_names_and_avatars.keys())
-project_github_repos = ["https://github.com/sozialhelden/wheelmap", "https://github.com/segmentio/nightmare", "https://github.com/KevinBatdorf/codaslider", "https://github.com/MaisonLogicielLibre/Website"]
-project_trello_pages = ["https://trello.com/b/rq2mYJNn/public-trello-boards", "https://trello.com/b/OFcSzY6W/reading-colloquium", "https://trello.com/b/pD1eFfJg/blogging-ponce-de-leon-churches", "https://trello.com/b/UQqGyNFG/interview-pipeline"]
+project_github_repos = ["https://github.com/yeralin/capstone", "https://github.com/yeralin/databeesProject", "https://github.com/MaisonLogicielLibre/Website", "https://github.com/KevinBatdorf/codaslider"]
+project_trello_pages = ["https://trello.com/b/fa1VjgZB/captostonetracker", "https://trello.com/b/OFcSzY6W/reading-colloquium", "https://trello.com/b/pD1eFfJg/blogging-ponce-de-leon-churches", "https://trello.com/b/UQqGyNFG/interview-pipeline"]
 brief_description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin urna odio."
 description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin urna odio, vel mattis ligula pulvinar et. Nulla urna urna, laoreet id nibh egestas, volutpat lobortis metus. Vestibulum ac velit euismod, bibendum elit a, blandit nunc. Fusce tincidunt metus justo, eleifend pretium augue ullamcorper non. Proin blandit fermentum aliquet. Vestibulum efficitur urna a mollis bibendum. Aenean rutrum interdum arcu, vitae fermentum mi efficitur in. Cras dictum, neque vitae mollis tristique, ante metus eleifend ante, et pellentesque sapien felis sit amet ante. Suspendisse eget sollicitudin est. Etiam at lacus nunc. Sed viverra interdum cursus."
 
@@ -62,7 +62,7 @@ for employee_name in random_employee_names:
     last_name = employee_name.split(' ')[1]
     if not Employee.objects.filter(first_name=first_name, last_name=last_name, email=first_name+last_name+"@capitalone.com"):
         employee = Employee(first_name=first_name, last_name=last_name, email=first_name+last_name +
-                            "@gmail.com", position="Supervisor")
+                            "@capitalone.com", position="Supervisor")
         employee.set_password("123")
         employee.save()
         try:

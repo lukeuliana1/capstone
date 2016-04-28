@@ -24,7 +24,7 @@ html {
 a {
 	outline: 0;
 	text-decoration: none;
-	&:hover {
+	&:hover, &:visited, &:hover, &:active, &:focus {
 		text-decoration: none;
 	}
 }

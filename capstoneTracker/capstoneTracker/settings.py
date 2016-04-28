@@ -88,10 +88,10 @@ if DEBUG:
 else:
     EMAIL_USE_TLS = True
     EMAIL_HOST = 'smtp.gmail.com'
-    DEFAULT_FROM_EMAIL = 'psucapstonetracker@gmail.com'
-    SERVER_EMAIL = 'psucapstonetracker@gmail.com'
-    EMAIL_HOST_USER = 'psucapstonetracker@gmail.com'
-    EMAIL_HOST_PASSWORD = 'alverbanec'
+    DEFAULT_FROM_EMAIL = 'XXX@gmail.com'
+    SERVER_EMAIL = 'XXX@gmail.com'
+    EMAIL_HOST_USER = 'XXX@gmail.com'
+    EMAIL_HOST_PASSWORD = 'XXX'
     EMAIL_PORT = 587
 
 AVATAR_GRAVATAR_BACKUP = False
